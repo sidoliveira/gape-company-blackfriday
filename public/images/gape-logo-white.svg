@@ -1,0 +1,20 @@
+<svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- G letter -->
+  <path d="M0 45V15C0 6.716 6.716 0 15 0H25C33.284 0 40 6.716 40 15V20H25V15H15V45H25V35H32.5V50H25C16.716 50 10 43.284 10 35V45H0Z" fill="white"/>
+  
+  <!-- Pink triangle in G -->
+  <path d="M15 15L25 25L15 35V15Z" fill="#FF1B6B"/>
+  
+  <!-- a letter -->
+  <path d="M50 50V35C50 31.134 53.134 28 57 28H67C70.866 28 74 31.134 74 35V50H64V35H60V50H50Z" fill="white"/>
+  <path d="M50 25V15H74V25H64V20H60V25H50Z" fill="white"/>
+  
+  <!-- p letter -->
+  <path d="M84 50V15H94V25H104C107.866 25 111 28.134 111 32V38C111 41.866 107.866 45 104 45H94V50H84ZM94 35H101V32H94V35Z" fill="white"/>
+  
+  <!-- e letter -->
+  <path d="M121 50V15H151V25H131V30H146V35H131V40H151V50H121Z" fill="white"/>
+  
+  <!-- COMPANY text -->
+  <text x="0" y="58" font-family="Arial, sans-serif" font-size="8" font-weight="bold" fill="white" letter-spacing="2px">COMPANY</text>
+</svg>

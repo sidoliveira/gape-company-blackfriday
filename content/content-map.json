@@ -1,0 +1,199 @@
+{
+  "hero": {
+    "raw": "O caminho para o sucesso do seu E-commerce já foi traçado. Só falta você se juntar aos +150 E-commerces que já alcançaram +R$80 milhões em vendas.",
+    "revised": {
+      "headline_options": [
+        "Transforme seu E-commerce em uma Máquina de Vendas",
+        "Escale seu E-commerce com Estratégias Comprovadas",
+        "Acelere o Crescimento do seu E-commerce com Resultados Garantidos"
+      ],
+      "subheadline_options": [
+        "Junte-se aos +150 e-commerces que já faturaram +R$80 milhões com nossas estratégias de alta conversão. Time completo de especialistas focado exclusivamente no seu sucesso.",
+        "Mais de 150 clientes, R$80 milhões em vendas geradas e 5 anos de experiência. Tenha um time de especialistas trabalhando exclusivamente para escalar seu negócio.",
+        "Estratégias comprovadas, resultados reais. Nosso time de especialistas já ajudou +150 e-commerces a faturarem +R$80 milhões. Agora é a sua vez."
+      ],
+      "cta_options": [
+        "Falar com Especialista",
+        "Quero Escalar Agora",
+        "Agendar Consultoria Gratuita"
+      ],
+      "secondary_cta": "Ver Cases de Sucesso"
+    }
+  },
+  "value_proposition": {
+    "raw": "A Gape Company impulsiona o crescimento de negócios, oferecendo soluções confiáveis e estratégicas para quem busca resultados sólidos.",
+    "revised": "Aceleramos o crescimento de e-commerces com estratégias data-driven e foco em ROI. Soluções completas para quem busca resultados sólidos e escaláveis."
+  },
+  "team_structure": {
+    "raw": "Imagine ter um time de especialistas pensando exclusivamente no sucesso do seu e-commerce. Na Gape Company, cada cliente conta com um estrategista, gestor de tráfego, designer e analista de resultados trabalhando juntos para entregar mais vendas e lucro. Tudo isso enquanto você foca no que faz de melhor",
+    "revised": "Time Dedicado ao Seu Sucesso"
+  },
+  "pillars": [
+    {
+      "title": "Planejamento Estratégico",
+      "raw": "Criação de um planejamento estratégico baseado nas melhores práticas do mercado e nas especificidades do e-commerce.",
+      "revised": {
+        "title": "Estratégia Data-Driven",
+        "description": "Planejamento estratégico baseado em análise profunda de mercado, concorrência e dados do seu e-commerce para maximizar ROI.",
+        "benefit": "Decisões inteligentes que geram mais vendas"
+      }
+    },
+    {
+      "title": "Análise de Dados",
+      "raw": "Nossas decisões são orientadas por dados, com análises profundas que permitem ajustes precisos e melhoria contínua.",
+      "revised": {
+        "title": "Inteligência de Dados",
+        "description": "Análises profundas e monitoramento contínuo para otimização constante das campanhas e estratégias.",
+        "benefit": "Ajustes precisos para melhoria contínua"
+      }
+    },
+    {
+      "title": "Gestão de Tráfego",
+      "raw": "Garante que seu investimento seja bem aproveitado e que as campanhas estejam sempre rodando de forma eficiente",
+      "revised": {
+        "title": "Tráfego de Alta Conversão",
+        "description": "Gestão especializada de campanhas para maximizar seu investimento e garantir eficiência constante.",
+        "benefit": "Mais leads qualificados, menos desperdício"
+      }
+    },
+    {
+      "title": "Criação e Design",
+      "raw": "Desenvolvem criativos que chamam a atenção do público e que são focados em conversão, sem perder a estética e branding da sua marca",
+      "revised": {
+        "title": "Criativos que Convertem",
+        "description": "Design estratégico focado em conversão, mantendo a identidade da sua marca e impactando seu público-alvo.",
+        "benefit": "Mais cliques, mais vendas, marca fortalecida"
+      }
+    }
+  ],
+  "methodology": {
+    "raw": "Ele analisa o mercado, concorrência e dados do seu e-commerce para planejar as ações que vão maximizar seu retorno.",
+    "revised": {
+      "title": "Nossa Metodologia Comprovada",
+      "steps": [
+        {
+          "step": "1. Diagnóstico Completo",
+          "description": "Análise profunda do seu negócio, mercado e concorrência"
+        },
+        {
+          "step": "2. Estratégia Personalizada",
+          "description": "Planejamento customizado baseado nos seus objetivos"
+        },
+        {
+          "step": "3. Execução Especializada",
+          "description": "Time dedicado implementando as melhores práticas"
+        },
+        {
+          "step": "4. Otimização Contínua",
+          "description": "Monitoramento e ajustes para maximizar resultados"
+        }
+      ]
+    }
+  },
+  "testimonials": [
+    {
+      "raw": "A Gape trouxe estratégias de captação de novos cliente dentro do youtube que já tínhamos tentado mas sem sucesso e desde que eles começaram a trabalhar trouxeram um aumento significativo nas nossas vendas",
+      "revised": {
+        "text": "A Gape trouxe estratégias de captação no YouTube que transformaram nossos resultados. Conseguimos um aumento significativo nas vendas com as mesmas estratégias que antes não funcionavam.",
+        "author": "[Cliente Placeholder]",
+        "position": "CEO, E-commerce de Moda",
+        "result": "Aumento significativo em vendas"
+      }
+    },
+    {
+      "raw": "Passamos por diversos profissionais e agências, mas nenhum que olhava o meu negócio como único, e isso foi diferente na Gape. Fizeram muito mais do que tráfego, trouxeram estratégia e um olhar de mercado que realmente fez a diferença!",
+      "revised": {
+        "text": "Diferente de outras agências, a Gape olhou meu negócio como único. Trouxeram muito mais que tráfego: estratégia completa e visão de mercado que realmente transformou nossos resultados.",
+        "author": "[Cliente Placeholder]",
+        "position": "Fundador, E-commerce de Eletrônicos",
+        "result": "Estratégia completa e visão de mercado"
+      }
+    },
+    {
+      "raw": "Eles me ajudaram a melhorar minha estratégia de aquisição, investimos o mesmo valor mais agora com e um retorno de 10x o valor investido. Eu recomendo a Gape.",
+      "revised": {
+        "text": "Melhoraram nossa estratégia de aquisição mantendo o mesmo investimento, mas agora temos um retorno 10x maior. Recomendo totalmente a Gape.",
+        "author": "[Cliente Placeholder]",
+        "position": "Diretor Comercial, E-commerce de Casa",
+        "result": "ROI 10x maior"
+      }
+    }
+  ],
+  "metrics": {
+    "raw": "+150 E-commerces que já alcançaram +R$80 milhões em vendas",
+    "revised": {
+      "clients": "150+",
+      "clients_label": "E-commerces Atendidos",
+      "revenue": "R$80M+",
+      "revenue_label": "Em Vendas Geradas",
+      "experience": "5",
+      "experience_label": "Anos de Experiência",
+      "team": "4",
+      "team_label": "Especialistas por Cliente"
+    }
+  },
+  "cta_form": {
+    "raw": "Envie suas informações de contato. Todos os seus dados estarão seguros, vamos cuidar bem deles. Em poucas horas, um dos nossos especialistas entrará em contato para agendar a reunião mais importante com você.",
+    "revised": {
+      "headline": "Pronto para Escalar seu E-commerce?",
+      "subheadline": "Agende uma consultoria gratuita e descubra como aumentar suas vendas em 30 dias.",
+      "form_intro": "Preencha os dados abaixo e em poucas horas um especialista entrará em contato:",
+      "privacy_note": "Seus dados estão 100% seguros conosco.",
+      "fields": {
+        "name": "Nome completo",
+        "email": "E-mail profissional",
+        "whatsapp": "WhatsApp",
+        "website": "Site do seu e-commerce",
+        "segment": "Segmento do seu negócio",
+        "revenue": "Faturamento mensal atual"
+      },
+      "revenue_options": [
+        "Até R$ 50mil",
+        "R$ 50mil - R$ 100mil",
+        "R$ 100mil - R$ 500mil",
+        "R$ 500mil - R$ 1M",
+        "Acima de R$ 1M"
+      ]
+    }
+  },
+  "footer": {
+    "raw": "CNPJ: 44.066.275/0001-01 – TM ESCALA ECOMMERCE LTDA Rua Vinte e cinco de agosto Número 99, CS 01 Bairro: Jd. Benintendi Franco da Rocha/Sp",
+    "revised": {
+      "company_name": "Gape Company",
+      "legal_name": "TM ESCALA ECOMMERCE LTDA",
+      "cnpj": "44.066.275/0001-01",
+      "address": "Rua Vinte e cinco de agosto, 99 - CS 01\nJd. Benintendi - Franco da Rocha/SP",
+      "links": [
+        "Política de Privacidade",
+        "Termos de Uso",
+        "Política de Cookies"
+      ]
+    }
+  },
+  "badges": {
+    "raw": "TODO: Verificar se possui certificações Google/Meta Partners",
+    "revised": {
+      "google_partner": "[TODO: Verificar certificação Google Partner]",
+      "meta_partner": "[TODO: Verificar certificação Meta Business Partner]",
+      "certifications": "[TODO: Outras certificações relevantes]"
+    }
+  },
+  "gaps_identified": [
+    "Selos e certificações (Google/Meta Partners) - verificar se possuem",
+    "Cases específicos com números detalhados",
+    "Metodologia mais detalhada (processo passo a passo)",
+    "Informações sobre garantias ou SLA",
+    "Preços ou faixas de investimento",
+    "Tempo médio para primeiros resultados",
+    "Especialidades por segmento de e-commerce"
+  ],
+  "recommendations": [
+    "Solicitar cases detalhados com permissão para uso",
+    "Verificar certificações oficiais Google/Meta",
+    "Detalhar metodologia em 4-6 etapas claras",
+    "Incluir garantias ou política de resultados",
+    "Adicionar FAQ com dúvidas mais comuns",
+    "Criar seção de especialidades por nicho",
+    "Incluir timeline típico de resultados"
+  ]
+}
