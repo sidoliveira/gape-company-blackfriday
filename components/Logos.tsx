@@ -1,5 +1,8 @@
 'use client'
 
+import { useState } from 'react'
+import { BarChart3, Users, ShoppingBag, TrendingUp } from 'lucide-react'
+
 const Logos = () => {
   // Real client logos based on the images provided
   const logos = [
@@ -12,10 +15,36 @@ const Logos = () => {
     { name: 'ANDRE METRO', width: 135, height: 40 },
   ]
 
+  const [isHovered, setIsHovered] = useState(false)
+
+  // Metrics data with icons
+  const metrics = [
+    {
+      value: '+5 anos',
+      label: 'de experiência',
+      icon: <BarChart3 className="h-5 w-5 text-gape-pink" />
+    },
+    {
+      value: '+150',
+      label: 'clientes atendidos',
+      icon: <Users className="h-5 w-5 text-gape-pink" />
+    },
+    {
+      value: '+700 mil',
+      label: 'investimento todos os meses',
+      icon: <ShoppingBag className="h-5 w-5 text-gape-pink" />
+    },
+    {
+      value: '+15M',
+      label: 'de faturamento mensal',
+      icon: <TrendingUp className="h-5 w-5 text-gape-pink" />
+    }
+  ]
+
   return (
     <section className="bg-gape-dark-soft py-16 sm:py-20 border-y border-gape-pink/10">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-8 sm:mb-12">
+        <div className="text-center mb-10 sm:mb-14">
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gape-white mb-3 sm:mb-4 px-4 sm:px-0">
             Junte-se aos negócios <span className="text-gape-pink">referência em seus segmentos</span> que confiam e crescem com a Gape Company
           </h2>
@@ -24,74 +53,81 @@ const Logos = () => {
           </p>
         </div>
         
-        {/* Metrics */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16">
-          <div className="text-center">
-            <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gape-pink mb-1 sm:mb-2">+5 anos</div>
-            <div className="text-gape-gray-light text-xs sm:text-sm">de experiência</div>
-          </div>
-          <div className="text-center">
-            <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gape-pink mb-1 sm:mb-2">+150</div>
-            <div className="text-gape-gray-light text-xs sm:text-sm">clientes atendidos</div>
-          </div>
-          <div className="text-center">
-            <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gape-pink mb-1 sm:mb-2">+700 mil</div>
-            <div className="text-gape-gray-light text-xs sm:text-sm">investimento todos os meses</div>
-          </div>
-          <div className="text-center">
-            <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gape-pink mb-1 sm:mb-2">+15M</div>
-            <div className="text-gape-gray-light text-xs sm:text-sm">de faturamento mensal</div>
-          </div>
+        {/* Metrics Cards */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-14">
+          {metrics.map((metric, index) => (
+            <div key={index} className="border border-gape-pink/20 bg-gape-dark/50 backdrop-blur-sm hover:border-gape-pink/40 transition-all duration-300 rounded-xl p-4 sm:p-6 flex flex-col items-center">
+              <div className="rounded-full bg-gape-pink/10 p-2 mb-3">
+                {metric.icon}
+              </div>
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gape-pink mb-1">
+                {metric.value}
+              </div>
+              <div className="text-gape-gray-light text-xs sm:text-sm text-center">
+                {metric.label}
+              </div>
+            </div>
+          ))}
         </div>
         
         {/* Logos carousel */}
-        <div className="overflow-hidden">
-          <div className="flex animate-scroll items-center justify-center space-x-6 sm:space-x-8 lg:space-x-12 hover:pause">
-            {/* First set of logos */}
-            {logos.map((logo, index) => (
-              <div
-                key={`logo-1-${index}`}
-                className="flex-shrink-0 opacity-40 transition-opacity duration-300 hover:opacity-80"
-              >
+        <div className="overflow-hidden rounded-lg border border-gape-pink/20 bg-gape-dark/30 backdrop-blur-sm p-6">
+          <h3 className="text-center text-sm font-medium text-gape-gray-light uppercase tracking-wider mb-6">
+            Empresas que confiam em nosso trabalho
+          </h3>
+          
+          <div 
+            className="relative"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <div className={`flex items-center justify-center space-x-8 lg:space-x-12 ${isHovered ? 'animate-pause' : 'animate-scroll'}`}>
+              {/* First set of logos */}
+              {logos.map((logo, index) => (
                 <div
-                  className="flex items-center justify-center rounded-lg bg-gape-dark border border-gape-pink/10 text-gape-gray-light hover:border-gape-pink/30 transition-all duration-300"
-                  style={{ 
-                    width: Math.max(80, logo.width * 0.7), 
-                    height: Math.max(30, logo.height * 0.7),
-                    minWidth: '80px'
-                  }}
+                  key={`logo-1-${index}`}
+                  className="flex-shrink-0 opacity-60 transition-opacity duration-300 hover:opacity-100"
                 >
-                  <span className="text-xs sm:text-sm font-medium px-2">{logo.name}</span>
+                  <div
+                    className="flex items-center justify-center rounded-lg border border-gape-pink/20 bg-gape-dark-soft hover:border-gape-pink/40 transition-all duration-300"
+                    style={{ 
+                      width: Math.max(80, logo.width * 0.7), 
+                      height: Math.max(30, logo.height * 0.7),
+                      minWidth: '80px'
+                    }}
+                  >
+                    <span className="text-xs sm:text-sm font-medium px-2 text-gape-white">{logo.name}</span>
+                  </div>
                 </div>
-              </div>
-            ))}
-            
-            {/* Duplicate set for infinite scroll effect */}
-            {logos.map((logo, index) => (
-              <div
-                key={`logo-2-${index}`}
-                className="flex-shrink-0 opacity-40 transition-opacity duration-300 hover:opacity-80"
-              >
+              ))}
+              
+              {/* Duplicate set for infinite scroll effect */}
+              {logos.map((logo, index) => (
                 <div
-                  className="flex items-center justify-center rounded-lg bg-gape-dark border border-gape-pink/10 text-gape-gray-light hover:border-gape-pink/30 transition-all duration-300"
-                  style={{ 
-                    width: Math.max(80, logo.width * 0.7), 
-                    height: Math.max(30, logo.height * 0.7),
-                    minWidth: '80px'
-                  }}
+                  key={`logo-2-${index}`}
+                  className="flex-shrink-0 opacity-60 transition-opacity duration-300 hover:opacity-100"
                 >
-                  <span className="text-xs sm:text-sm font-medium px-2">{logo.name}</span>
+                  <div
+                    className="flex items-center justify-center rounded-lg border border-gape-pink/20 bg-gape-dark-soft hover:border-gape-pink/40 transition-all duration-300"
+                    style={{ 
+                      width: Math.max(80, logo.width * 0.7), 
+                      height: Math.max(30, logo.height * 0.7),
+                      minWidth: '80px'
+                    }}
+                  >
+                    <span className="text-xs sm:text-sm font-medium px-2 text-gape-white">{logo.name}</span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-        
-        {/* Note for replacing placeholders */}
-        <div className="mt-6 text-center">
-          <p className="text-xs text-gray-400">
-            * Logos de clientes serão substituídos pelos reais conforme autorização
-          </p>
+          
+          {/* Note for replacing placeholders */}
+          <div className="mt-6 text-center">
+            <p className="text-xs text-gape-gray-light">
+              * Logos de clientes serão substituídos pelos reais conforme autorização
+            </p>
+          </div>
         </div>
       </div>
       
@@ -109,7 +145,7 @@ const Logos = () => {
           animation: scroll 30s linear infinite;
         }
         
-        .animate-scroll:hover {
+        .animate-pause {
           animation-play-state: paused;
         }
       `}</style>

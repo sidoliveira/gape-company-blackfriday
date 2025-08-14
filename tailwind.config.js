@@ -9,31 +9,40 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          50: '#fef7f7',
-          100: '#fde8e8',
-          200: '#fbd5d5',
-          300: '#f8b4b4',
-          400: '#f38ba8',
-          500: '#ec4899', // Rosa principal da Gape
-          600: '#db2777',
-          700: '#be185d',
-          800: '#9d174d',
-          900: '#831843',
+          primary: '#F90058',
+          secondary: '#1B1C1C',
+          white: '#FFFFFF',
+          50: '#fef2f6',
+          100: '#fde6ed',
+          200: '#fccde0',
+          300: '#f9a8c8',
+          400: '#f472a6',
+          500: '#F90058',
+          600: '#e11d48',
+          700: '#be123c',
+          800: '#9f1239',
+          900: '#881337',
         },
         gape: {
-          pink: '#ec4899', // Rosa vibrante principal
-          'pink-dark': '#be185d', // Rosa mais escuro
-          dark: '#0f0f0f', // Preto/cinza muito escuro
-          'dark-soft': '#1a1a1a', // Cinza escuro suave
-          white: '#ffffff',
+          pink: '#F90058',
+          'pink-dark': '#be123c',
+          dark: '#0a0a0a',
+          'dark-soft': '#1B1C1C',
+          white: '#FFFFFF',
           gray: '#6b7280',
-          'gray-light': '#9ca3af',
+          'gray-light': '#94a3b8',
+          orange: '#F90058', // Mantendo compatibilidade
         },
         ink: 'var(--ink)',
         muted: 'var(--muted)',
         bg: {
           DEFAULT: 'var(--bg)',
           soft: 'var(--bg-soft)',
+          card: 'var(--bg-card)',
+        },
+        border: {
+          DEFAULT: 'var(--border)',
+          light: 'var(--border-light)',
         },
       },
       fontFamily: {

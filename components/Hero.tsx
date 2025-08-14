@@ -1,16 +1,25 @@
 'use client'
 
-import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { ChevronDown, ArrowRight, BarChart2, ShoppingCart, TrendingUp, Phone, Mail, Award, Star, X, Target, Zap } from 'lucide-react'
 import contentMap from '@/content/content-map.json'
 import Logo from './Logo'
 
 const Hero = () => {
   const [selectedRevenue, setSelectedRevenue] = useState('')
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
   
   const heroContent = contentMap.hero.revised
   const revenueOptions = contentMap.cta_form.revised.revenue_options
+
+  useEffect(() => {
+    // Add animation delay for elements to appear
+    const timer = setTimeout(() => {
+      setIsVisible(true)
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [])
 
   const handleCTAClick = (ctaType: 'primary' | 'secondary') => {
     // GTM tracking will be added here
@@ -24,109 +33,193 @@ const Hero = () => {
   }
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gape-dark pt-16 pb-12 sm:pb-16 lg:pt-24 lg:pb-28">
-      {/* Header with Logo */}
-      <header className="absolute top-0 left-0 right-0 z-10 bg-gape-dark/80 backdrop-blur-sm border-b border-gape-pink/10">
-        <div className="container mx-auto px-4 py-3 sm:py-4">
-          <Logo variant="white" width={120} height={36} className="sm:w-[140px] sm:h-[42px]" />
+    <section className="relative min-h-screen overflow-hidden bg-gape-dark pt-24 pb-12 sm:pb-16 lg:pt-32 lg:pb-28">
+      {/* Enhanced Header */}
+      <header className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-r from-gape-dark/95 via-gape-dark/90 to-gape-dark/95 backdrop-blur-xl border-b border-brand-primary/20 shadow-lg">
+        {/* Top bar removido */}
+        
+        {/* Main navigation */}
+        <div className="container mx-auto px-4 py-4 sm:py-6">
+          <div className="flex items-center justify-between">
+            {/* Logo and tagline */}
+            <div className="flex items-center gap-4">
+              <Logo variant="white" width={140} height={42} className="sm:w-[160px] sm:h-[48px]" />
+              <div className="hidden lg:block">
+                <div className="text-xs text-brand-primary/90 font-medium">ESPECIALISTAS EM</div>
+                <div className="text-sm text-gape-white font-semibold">Google Ads para E-commerce</div>
+              </div>
+            </div>
+            
+            {/* Navigation and CTA */}
+            <div className="flex items-center gap-6">
+              {/* Performance badge removido */}
+              
+              {/* Quick CTA */}
+              <button
+                onClick={() => handleCTAClick('primary')}
+                className="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-brand-primary/90 to-brand-600 text-white text-sm font-semibold rounded-lg hover:shadow-lg hover:shadow-brand-primary/25 transition-all duration-300 hover:scale-105"
+              >
+                <Zap className="h-4 w-4" />
+                Consultoria Gratuita
+              </button>
+              
+              {/* Mobile menu button removido */}
+            </div>
+          </div>
         </div>
       </header>
+      
       {/* Background decoration */}
-      <div className="absolute inset-0">
-        <div className="h-full w-full bg-gradient-to-br from-gape-dark via-gape-dark-soft to-gape-pink/10" />
-        {/* Geometric shapes */}
-        <div className="absolute top-20 right-10 h-32 w-32 rounded-full bg-gape-pink/20 blur-xl" />
-        <div className="absolute bottom-20 left-10 h-48 w-48 rounded-full bg-gape-pink/10 blur-2xl" />
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 bg-gradient-to-br from-gape-dark via-gape-dark-soft to-brand-primary/3" />
+        
+        {/* Animated gradient orbs */}
+        <div className="absolute top-1/4 right-[10%] h-64 w-64 rounded-full bg-brand-primary/8 blur-3xl animate-pulse" 
+             style={{animationDuration: '8s'}} />
+        <div className="absolute bottom-1/4 left-[5%] h-72 w-72 rounded-full bg-brand-primary/4 blur-3xl animate-pulse" 
+             style={{animationDuration: '12s'}} />
+             
+        {/* Grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_40%,transparent_100%)]" />
       </div>
       
-      <div className="container mx-auto px-4 relative mt-16 sm:mt-20">
+      <div className="container mx-auto px-4 relative mt-20 sm:mt-24">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[70vh] sm:min-h-[80vh]">
           {/* Left content */}
           <div className="text-left">
+            {/* Badge */}
+            <div className={`mb-6 inline-flex items-center px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary/90 text-sm font-medium transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-4'}`}>
+              Especialistas em Tráfego para E-commerce
+            </div>
+            
             {/* Main headline */}
-            <h1 className="text-3xl font-bold tracking-tight text-gape-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight">
+            <h1 className={`text-3xl font-bold tracking-tight text-gape-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight transition-all duration-700 delay-100 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-4'}`}>
               <span className="block">Acelere o crescimento do seu</span>
-              <span className="block text-gape-pink">E-commerce</span>
+              <span className="block text-brand-primary/95">E-commerce</span>
               <span className="block">com quem sabe como fazer.</span>
             </h1>
             
             {/* Subheadline */}
-            <p className="mt-4 sm:mt-6 max-w-2xl text-base leading-7 text-gape-gray-light sm:text-lg sm:leading-8 lg:text-xl">
-              O caminho para o sucesso do seu E-commerce já foi traçado. Só falta você se juntar aos <span className="text-gape-pink font-semibold">+150 E-commerces</span> que já alcançaram <span className="text-gape-pink font-semibold">+R$0 milhões em vendas.</span>
+            <p className={`mt-4 sm:mt-6 max-w-2xl text-base leading-7 text-gape-gray-light sm:text-lg sm:leading-8 lg:text-xl transition-all duration-700 delay-200 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-4'}`}>
+              O caminho para o sucesso do seu E-commerce já foi traçado. Só falta você se juntar aos <span className="text-brand-primary/90 font-semibold">+150 E-commerces</span> que já alcançaram <span className="text-brand-primary/90 font-semibold">+R$50 milhões em vendas.</span>
             </p>
           
-          {/* CTA button */}
-            <div className="mt-6 sm:mt-8">
+            {/* CTA buttons */}
+            <div className={`mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-4'}`}>
               <button
                 onClick={() => handleCTAClick('primary')}
-                className="w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-gape-white bg-gape-pink rounded-lg hover:bg-gape-pink-dark transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-semibold text-gape-white bg-brand-primary/95 rounded-lg hover:bg-brand-600 transition-all duration-300 hover:shadow-lg hover:shadow-brand-primary/20"
               >
                 Quero crescer meu E-commerce
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </button>
+              
+              <button
+                onClick={() => handleCTAClick('secondary')}
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-medium text-brand-primary/90 border border-brand-primary/20 rounded-lg hover:bg-brand-primary/5 transition-all duration-300"
+              >
+                Ver casos de sucesso
               </button>
             </div>
             
             {/* Social proof */}
-            <div className="mt-6 sm:mt-8 flex items-center gap-3 sm:gap-4">
-              <div className="flex -space-x-2">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gape-pink border-2 border-gape-dark flex items-center justify-center text-xs font-bold text-gape-white">+</div>
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-400 border-2 border-gape-dark"></div>
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-500 border-2 border-gape-dark"></div>
-                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-600 border-2 border-gape-dark"></div>
+            <div className={`mt-8 sm:mt-10 flex items-center gap-3 sm:gap-4 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-4'}`}>
+              <div className="flex -space-x-3">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-primary/90 flex items-center justify-center text-xs font-bold text-white border-2 border-gape-dark">+</div>
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-400 border-2 border-gape-dark overflow-hidden">
+                  <div className="w-full h-full bg-gradient-to-br from-blue-400/80 to-blue-600/80 flex items-center justify-center text-white text-xs font-bold">JM</div>
+                </div>
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-500 border-2 border-gape-dark overflow-hidden">
+                  <div className="w-full h-full bg-gradient-to-br from-green-400/80 to-green-600/80 flex items-center justify-center text-white text-xs font-bold">AS</div>
+                </div>
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-600 border-2 border-gape-dark overflow-hidden">
+                  <div className="w-full h-full bg-gradient-to-br from-purple-400/80 to-purple-600/80 flex items-center justify-center text-white text-xs font-bold">MR</div>
+                </div>
               </div>
               <div className="text-gape-gray-light">
-                <span className="text-gape-pink font-semibold text-sm sm:text-base">+150</span><br />
-                <span className="text-xs sm:text-sm">Cases de Sucesso. O próximo pode ser o seu.</span>
+                <span className="text-brand-primary/90 font-semibold text-sm sm:text-base">+150</span>
+                <span className="text-xs sm:text-sm block">Cases de Sucesso. O próximo pode ser o seu.</span>
               </div>
             </div>
           </div>
           
           {/* Right content - Dashboard mockup */}
-          <div className="relative hidden md:block lg:block mt-8 lg:mt-0">
-            <div className="relative bg-gape-dark-soft rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-2xl border border-gape-pink/20">
+          <div className={`relative hidden md:block lg:block mt-8 lg:mt-0 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-brand-primary/15 to-brand-600/15 rounded-2xl blur-lg opacity-50 animate-pulse" style={{animationDuration: '3s'}}></div>
+            
+            <div className="relative bg-gape-dark-soft/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-2xl border border-brand-primary/20">
               {/* Mock dashboard header */}
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                <div className="ml-4 text-gape-gray text-sm">Painel Gape Company</div>
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                <div className="text-gape-gray text-sm">Dashboard • Gape Company</div>
+              </div>
+              
+              {/* Performance summary */}
+              <div className="mb-6 p-4 bg-gape-dark/50 rounded-lg border border-brand-primary/10">
+                <div className="flex justify-between items-center mb-2">
+                  <h3 className="text-sm font-medium text-gape-white">Desempenho da Campanha</h3>
+                  <div className="inline-flex items-center px-2 py-1 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary/90 text-xs">
+                    <TrendingUp className="mr-1 h-3 w-3" />
+                    +24.8%
+                  </div>
+                </div>
+                
+                {/* Mini chart */}
+                <div className="h-16 w-full flex items-end gap-1">
+                  {[35, 45, 30, 60, 25, 45, 40, 50, 55, 70, 45, 60, 75].map((height, i) => (
+                    <div 
+                      key={i} 
+                      className="h-full flex-1 flex items-end"
+                    >
+                      <div 
+                        className="w-full bg-brand-primary/70 rounded-sm" 
+                        style={{height: `${height}%`}}
+                      ></div>
+                    </div>
+                  ))}
+                </div>
               </div>
               
               {/* Mock metrics */}
               <div className="space-y-4">
-                <div className="flex justify-between items-center p-4 bg-gape-dark rounded-lg border border-gape-pink/10">
+                <div className="flex justify-between items-center p-4 bg-gape-dark/30 rounded-lg border border-brand-primary/10">
                   <div>
                     <div className="text-gape-gray text-sm">Alcance</div>
-                    <div className="text-gape-white text-2xl font-bold">32.984</div>
+                    <div className="text-brand-primary/90 text-2xl font-bold">32.984</div>
                   </div>
-                  <div className="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center">
-                    <div className="w-6 h-6 bg-red-500 rounded"></div>
+                  <div className="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center text-brand-primary/90">
+                    <BarChart2 className="h-6 w-6" />
                   </div>
                 </div>
                 
-                <div className="flex justify-between items-center p-4 bg-gape-dark rounded-lg border border-gape-pink/10">
+                <div className="flex justify-between items-center p-4 bg-gape-dark/30 rounded-lg border border-brand-primary/10">
                   <div>
                     <div className="text-gape-gray text-sm">Cliques</div>
-                    <div className="text-gape-white text-2xl font-bold">350</div>
+                    <div className="text-brand-primary/90 text-2xl font-bold">1.350</div>
                   </div>
-                  <div className="w-12 h-12 bg-orange-500/20 rounded-lg flex items-center justify-center">
-                    <div className="w-6 h-6 bg-orange-500 rounded"></div>
+                  <div className="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center text-brand-primary/90">
+                    <TrendingUp className="h-6 w-6" />
                   </div>
                 </div>
                 
-                <div className="flex justify-between items-center p-4 bg-gape-dark rounded-lg border border-gape-pink/10">
+                <div className="flex justify-between items-center p-4 bg-gape-dark/30 rounded-lg border border-brand-primary/10">
                   <div>
                     <div className="text-gape-gray text-sm">Vendas</div>
-                    <div className="text-gape-pink text-2xl font-bold">50.256,97</div>
+                    <div className="text-brand-primary/90 text-2xl font-bold">R$ 50.256,97</div>
                   </div>
-                  <div className="w-12 h-12 bg-gape-pink/20 rounded-lg flex items-center justify-center">
-                    <div className="w-6 h-6 bg-gape-pink rounded"></div>
+                  <div className="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center text-brand-primary/90">
+                    <ShoppingCart className="h-6 w-6" />
                   </div>
                 </div>
               </div>
               
               {/* Mock notification */}
-              <div className="mt-6 p-3 bg-green-500/10 border border-green-500/20 rounded-lg">
-                <div className="text-green-400 text-sm">Quando começar de fato a escalar para resultados ainda melhores?</div>
+              <div className="mt-6 p-3 bg-brand-primary/10 border border-brand-primary/20 rounded-lg">
+                <div className="text-brand-primary/90 text-sm">Quando começar de fato a escalar para resultados ainda melhores?</div>
               </div>
             </div>
           </div>

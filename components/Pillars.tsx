@@ -1,7 +1,66 @@
 'use client'
 
-import { BarChart3, Target, Palette, TrendingUp } from 'lucide-react'
+import { BarChart3, Target, Palette, TrendingUp, ArrowRight } from 'lucide-react'
 import contentMap from '@/content/content-map.json'
+
+// SVG Filter for glass effect
+const GlassFilter = () => (
+  <svg style={{ display: 'none' }}>
+    <filter
+      id="glass-distortion"
+      x="0%"
+      y="0%"
+      width="100%"
+      height="100%"
+      filterUnits="objectBoundingBox"
+    >
+      <feTurbulence
+        type="fractalNoise"
+        baseFrequency="0.001 0.005"
+        numOctaves="1"
+        seed="17"
+        result="turbulence"
+      />
+      <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+      <feDisplacementMap
+        in="SourceGraphic"
+        in2="softMap"
+        scale="20"
+        xChannelSelector="R"
+        yChannelSelector="G"
+      />
+    </filter>
+  </svg>
+)
+
+// Glass Effect Component
+const GlassCard = ({ 
+  children, 
+  className = '', 
+  hoverEffect = true 
+}: { 
+  children: React.ReactNode; 
+  className?: string; 
+  hoverEffect?: boolean;
+}) => {
+  return (
+    <div
+      className={`relative overflow-hidden rounded-2xl backdrop-blur-sm border border-gape-pink/10 ${
+        hoverEffect ? 'transition-all duration-500 hover:border-gape-pink/30 hover:-translate-y-2 hover:shadow-lg hover:shadow-gape-pink/5 group' : ''
+      } ${className}`}
+    >
+      <div
+        className="absolute inset-0 z-0 overflow-hidden rounded-2xl opacity-30"
+        style={{
+          backdropFilter: "blur(3px)",
+          filter: "url(#glass-distortion)",
+          isolation: "isolate",
+        }}
+      />
+      <div className="relative z-10">{children}</div>
+    </div>
+  )
+}
 
 const Pillars = () => {
   const pillarsData = contentMap.pillars
@@ -17,10 +76,20 @@ const Pillars = () => {
 
   return (
     <section className="section-padding bg-gape-black relative overflow-hidden">
+      <GlassFilter />
+      
       {/* Background decorative elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-gape-pink/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-gape-pink/3 rounded-full blur-3xl" />
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-20 left-10 w-64 h-64 bg-gape-pink/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-80 h-80 bg-gape-pink/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gape-pink/5 rounded-full blur-3xl" />
+        
+        {/* Animated gradient lines */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-transparent via-gape-pink to-transparent" />
+          <div className="absolute top-0 left-2/4 w-px h-full bg-gradient-to-b from-transparent via-gape-pink to-transparent" />
+          <div className="absolute top-0 left-3/4 w-px h-full bg-gradient-to-b from-transparent via-gape-pink to-transparent" />
+        </div>
       </div>
       
       <div className="container-custom relative">
@@ -42,67 +111,61 @@ const Pillars = () => {
         </div>
         
         {/* Pillars grid */}
-        <div className="mt-12 sm:mt-16 lg:mt-20 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 px-4 sm:px-0">
+        <div className="mt-12 sm:mt-16 lg:mt-20 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 px-4 sm:px-0">
           {pillarsData.map((pillar, index) => {
             const IconComponent = icons[iconKeys[index]]
             const pillarContent = pillar.revised
             
             return (
-              <div
-                key={index}
-                className="group relative rounded-2xl bg-gape-dark/50 backdrop-blur-sm border border-gape-pink/10 p-6 sm:p-8 transition-all duration-500 hover:border-gape-pink/30 hover:-translate-y-2 hover:bg-gape-dark/80"
-              >
-                {/* Icon */}
-                <div className="mb-4 sm:mb-6">
-                  <div className="inline-flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-xl bg-gradient-to-br from-gape-pink/20 to-gape-pink/10 border border-gape-pink/20 group-hover:from-gape-pink/30 group-hover:to-gape-pink/20 transition-all duration-300">
-                    <IconComponent className="h-6 w-6 sm:h-7 sm:w-7 text-gape-pink" />
+              <GlassCard key={index} className="bg-gape-dark/50 h-full">
+                <div className="p-6 sm:p-8">
+                  {/* Icon */}
+                  <div className="mb-6">
+                    <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-gape-pink/20 to-gape-pink/10 border border-gape-pink/20 group-hover:from-gape-pink/30 group-hover:to-gape-pink/20 transition-all duration-300">
+                      <IconComponent className="h-7 w-7 text-gape-pink" />
+                    </div>
+                  </div>
+                  
+                  {/* Content */}
+                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-gape-pink-light transition-colors duration-300">
+                    {pillarContent.title}
+                  </h3>
+                  
+                  <p className="text-gape-gray-light mb-6 leading-relaxed">
+                    {pillarContent.description}
+                  </p>
+                  
+                  {/* Benefit highlight */}
+                  <div className="inline-flex items-center text-sm font-medium text-gape-pink">
+                    <div className="mr-2 h-2 w-2 rounded-full bg-gape-pink animate-pulse" />
+                    {pillarContent.benefit}
                   </div>
                 </div>
-                
-                {/* Content */}
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4 group-hover:text-gape-pink-light transition-colors duration-300">
-                  {pillarContent.title}
-                </h3>
-                
-                <p className="text-gape-gray-light mb-4 sm:mb-6 leading-relaxed text-sm">
-                  {pillarContent.description}
-                </p>
-                
-                {/* Benefit highlight */}
-                <div className="inline-flex items-center text-sm font-medium text-gape-pink">
-                  <div className="mr-2 h-2 w-2 rounded-full bg-gape-pink animate-pulse" />
-                  {pillarContent.benefit}
-                </div>
-                
-                {/* Hover effect overlay */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gape-pink/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              </div>
+              </GlassCard>
             )
           })}
         </div>
         
         {/* Bottom CTA */}
-        <div className="mt-12 sm:mt-16 lg:mt-20 text-center px-4 sm:px-0">
-          <div className="relative inline-block w-full max-w-2xl">
-            <div className="absolute inset-0 bg-gradient-to-r from-gape-pink/20 to-gape-pink-light/20 rounded-2xl blur-xl" />
-            <div className="relative bg-gape-dark/80 backdrop-blur-sm border border-gape-pink/20 rounded-2xl p-6 sm:p-8 mx-auto">
-              <p className="text-lg sm:text-xl text-white mb-2 font-semibold">
+        <div className="mt-20 text-center px-4 sm:px-0">
+          <GlassCard className="max-w-3xl mx-auto bg-gape-dark/30" hoverEffect={false}>
+            <div className="p-8 sm:p-10">
+              <h3 className="text-xl sm:text-2xl text-white mb-3 font-semibold">
                 Pronto para ter uma equipe completa trabalhando no seu sucesso?
-              </p>
-              <p className="text-sm sm:text-base text-gape-gray-light mb-6 sm:mb-8">
-                Descubra como nossa metodologia G.A.P.E pode transformar seu e-commerce
+              </h3>
+              <p className="text-gape-gray-light mb-8 max-w-2xl mx-auto">
+                Descubra como nossa metodologia G.A.P.E pode transformar seu e-commerce e 
+                impulsionar seus resultados com tráfego qualificado do Google Ads
               </p>
               <button 
                 onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-gape-pink to-gape-pink-light text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-gape-pink/25 transition-all duration-300 hover:-translate-y-1 text-sm sm:text-base"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-gape-pink to-gape-pink-light text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-gape-pink/25 transition-all duration-300 hover:-translate-y-1 group"
               >
                 Falar com Especialista
-                <svg className="ml-2 h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
-          </div>
+          </GlassCard>
         </div>
       </div>
     </section>
