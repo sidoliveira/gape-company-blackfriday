@@ -52,7 +52,7 @@ const Footer = () => {
                   <div className="text-center p-3 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
                     <div className="flex items-center justify-center mb-1">
                       <Users className="h-4 w-4 text-gape-orange mr-1" />
-                      <span className="text-lg font-bold text-white">200+</span>
+                      <span className="text-lg font-bold text-white">150+</span>
                     </div>
                     <span className="text-xs text-gray-400">E-commerces</span>
                   </div>
@@ -67,20 +67,7 @@ const Footer = () => {
               </div>
               
               <div className="space-y-4">
-                <div className="flex items-center group">
-                  <div className="flex-shrink-0 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center mr-4 group-hover:bg-gape-orange/20 group-hover:scale-110 transition-all duration-300 border border-white/20">
-                    <Mail className="h-5 w-5 text-gape-orange group-hover:text-white" />
-                  </div>
-                  <div>
-                    <a 
-                      href="mailto:contato@gapecompany.com"
-                      className="text-base text-white hover:text-gape-orange transition-colors duration-300 font-semibold block"
-                    >
-                      contato@gapecompany.com
-                    </a>
-                    <span className="text-sm text-gray-400">Resposta em até 2h</span>
-                  </div>
-                </div>
+
                 
                 <div className="flex items-center group">
                   <div className="flex-shrink-0 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center mr-4 group-hover:bg-gape-orange/20 group-hover:scale-110 transition-all duration-300 border border-white/20">
@@ -88,10 +75,10 @@ const Footer = () => {
                   </div>
                   <div>
                     <a 
-                      href="tel:+5511999999999"
+                      href="tel:+551195776-4000"
                       className="text-base text-white hover:text-gape-orange transition-colors duration-300 font-semibold block"
                     >
-                      (11) 99999-9999
+                      11 95776‑4000
                     </a>
                     <span className="text-sm text-gray-400">WhatsApp disponível</span>
                   </div>
@@ -105,7 +92,7 @@ const Footer = () => {
                     <span className="text-base text-white font-semibold block">
                       {footerContent.address}
                     </span>
-                    <span className="text-sm text-gray-400">Atendimento presencial</span>
+
                   </div>
                 </div>
               </div>
@@ -219,7 +206,7 @@ const Footer = () => {
             <div className="flex items-center space-x-4">
               <span className="text-sm text-gray-400 font-medium mr-2">Siga-nos:</span>
               <a 
-                href="https://linkedin.com/company/gapecompany"
+                href="https://br.linkedin.com/company/gape-company"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-gape-orange hover:bg-gape-orange/20 hover:scale-110 hover:text-white transition-all duration-300 group border border-white/20"
@@ -228,7 +215,7 @@ const Footer = () => {
                 <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
               </a>
               <a 
-                href="https://instagram.com/gapecompany"
+                href="https://www.instagram.com/gape.company/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-gape-orange hover:bg-gape-orange/20 hover:scale-110 hover:text-white transition-all duration-300 group border border-white/20"
@@ -252,16 +239,16 @@ const Footer = () => {
             <div className="flex items-center space-x-3">
               <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-gape-orange hover:bg-gape-orange/20 hover:scale-110 hover:text-white transition-all duration-300 group border border-white/20">
                 <img 
-                  src="/images/google-logo.svg" 
+                  src="/images/google_partners.svg" 
                   alt="Google Partner" 
-                  className="h-5 w-auto filter brightness-90 group-hover:scale-110 transition-transform duration-300"
+                  className="w-auto filter brightness-90 group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
               <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center text-blue-400 hover:bg-blue-500/20 hover:scale-110 hover:text-white transition-all duration-300 group border border-white/20">
                 <img 
-                  src="/images/meta-logo.svg" 
+                  src="/images/meta_partners.svg" 
                   alt="Meta Business Partner" 
-                  className="h-5 w-auto filter brightness-90 group-hover:scale-110 transition-transform duration-300"
+                  className="w-auto filter brightness-90 group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
             </div>

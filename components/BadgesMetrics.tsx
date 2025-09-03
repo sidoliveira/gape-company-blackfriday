@@ -1,41 +1,8 @@
 'use client'
 
-import { Award, Users, TrendingUp, Clock, Target, Zap, ShoppingCart, BarChart3 } from 'lucide-react'
-import contentMap from '@/content/content-map.json'
+import { Award } from 'lucide-react'
 
 const BadgesMetrics = () => {
-  const metrics = contentMap.metrics.revised
-  
-  const metricsData = [
-    {
-      icon: ShoppingCart,
-      value: metrics.clients,
-      label: metrics.clients_label,
-      description: 'E-commerces transformados',
-      gradient: 'from-brand-primary to-brand-600'
-    },
-    {
-      icon: TrendingUp,
-      value: metrics.revenue,
-      label: metrics.revenue_label,
-      description: 'Em vendas geradas via Google Ads',
-      gradient: 'from-brand-primary to-brand-600'
-    },
-    {
-      icon: Target,
-      value: metrics.experience,
-      label: metrics.experience_label,
-      description: 'Otimizando campanhas no Google',
-      gradient: 'from-brand-primary to-brand-600'
-    },
-    {
-      icon: Zap,
-      value: metrics.team,
-      label: metrics.team_label,
-      description: 'Especialistas certificados',
-      gradient: 'from-brand-primary to-brand-600'
-    }
-  ]
   
   // Badges with platform logos
   const badges = [
@@ -59,7 +26,9 @@ const BadgesMetrics = () => {
         { name: 'Shopify', logo: '/images/shopify-logo.svg' },
         { name: 'WooCommerce', logo: '/images/woocommerce-logo.svg' },
         { name: 'Tray', logo: '/images/tray-logo.png' },
-        { name: 'VTEX', logo: '/images/vtex-logo.svg' }
+        { name: 'VTEX', logo: '/images/vtex-logo.svg' },
+        { name: 'Loja Integrada', logo: '/images/logo-loja-integrada.png' },
+        { name: 'Nuvem Shop', logo: '/images/logo-loga-nuvem.png' }
       ]
     }
   ]
@@ -79,64 +48,8 @@ const BadgesMetrics = () => {
       </div>
       
       <div className="container-custom relative">
-        {/* Modern Header */}
-        <div className="mx-auto max-w-4xl text-center">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-primary/10 to-brand-600/10 backdrop-blur-sm border border-brand-primary/20 rounded-full px-6 py-3 mb-6">
-            <BarChart3 className="w-4 h-4 text-brand-primary/90" />
-            <span className="text-brand-primary/90 font-medium text-sm">Performance Comprovada</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
-            Resultados que
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-brand-primary via-brand-600 to-brand-primary"> Transformam E-commerces</span>
-          </h2>
-          <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
-            Dados reais de campanhas Google Ads que geraram milhões em vendas para nossos clientes.
-            <span className="block mt-2 text-brand-primary/90 font-semibold">Sua próxima história de sucesso começa aqui.</span>
-          </p>
-        </div>
-        
-        {/* Enhanced Metrics Grid */}
-        <div className="mt-16 sm:mt-20 lg:mt-24 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-          {metricsData.map((metric, index) => {
-            const IconComponent = metric.icon
-            
-            return (
-              <div
-                key={index}
-                className="group relative text-center p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-500 hover:-translate-y-3 hover:scale-105"
-              >
-                {/* Glow effect */}
-                <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${metric.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-xl`}></div>
-                
-                {/* Icon with gradient background */}
-                <div className={`relative mx-auto mb-6 inline-flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br ${metric.gradient} shadow-2xl group-hover:shadow-3xl transition-all duration-500 group-hover:scale-110`}>
-                  <IconComponent className="h-10 w-10 text-white drop-shadow-lg" />
-                </div>
-                
-                {/* Value with enhanced typography */}
-                <div className={`relative text-4xl lg:text-5xl xl:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br ${metric.gradient} mb-3 tracking-tight`}>
-                  {metric.value}
-                </div>
-                
-                {/* Label */}
-                <div className="text-lg font-bold text-white mb-3 tracking-wide">
-                  {metric.label}
-                </div>
-                
-                {/* Description */}
-                <div className="text-sm text-gray-300 leading-relaxed">
-                  {metric.description}
-                </div>
-                
-                {/* Bottom accent line */}
-                <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 group-hover:w-20 h-1 bg-gradient-to-r ${metric.gradient} rounded-full transition-all duration-500`}></div>
-              </div>
-            )
-          })}
-        </div>
-        
         {/* Enhanced Badges Section */}
-        <div className="mt-24 sm:mt-32 lg:mt-40">
+        <div>
           <div className="text-center mb-12 sm:mb-16 lg:mb-20">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-primary/10 to-brand-600/10 backdrop-blur-sm border border-brand-primary/20 rounded-full px-6 py-3 mb-6">
               <Award className="w-4 h-4 text-brand-primary/90" />
@@ -162,7 +75,7 @@ const BadgesMetrics = () => {
                 <div className="mb-8">
                   {badge.platforms ? (
                     // Multiple platform logos with modern grid layout
-                    <div className="grid grid-cols-2 gap-4 mb-6">
+                    <div className="grid grid-cols-3 gap-4 mb-6">
                       {badge.platforms.map((platform, platformIndex) => (
                         <div key={platformIndex} className="relative group/platform">
                           <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/20 to-brand-600/20 rounded-2xl blur-lg opacity-0 group-hover/platform:opacity-100 transition-opacity duration-300"></div>

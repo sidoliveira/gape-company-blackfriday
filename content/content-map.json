@@ -94,28 +94,73 @@
     {
       "raw": "A Gape trouxe estratégias de captação de novos cliente dentro do youtube que já tínhamos tentado mas sem sucesso e desde que eles começaram a trabalhar trouxeram um aumento significativo nas nossas vendas",
       "revised": {
-        "text": "A Gape trouxe estratégias de captação no YouTube que transformaram nossos resultados. Conseguimos um aumento significativo nas vendas com as mesmas estratégias que antes não funcionavam.",
-        "author": "[Cliente Placeholder]",
-        "position": "CEO, E-commerce de Moda",
-        "result": "Aumento significativo em vendas"
+        "text": "Antes da Gape, nosso ROI era instável. Hoje, investimos o mesmo, mas recebemos 10x o retorno. A parceria foi um divisor de águas!",
+        "author": "Sidney Oliveira",
+        "position": "CMO Adminer",
+        "result": "Aumento significativo em vendas",
+        "metrics": {
+          "main_result": "10x",
+          "main_result_label": "ROI Alcançado",
+          "main_result_description": "em 90 dias",
+          "secondary_metrics": [
+            {
+              "label": "Receita",
+              "value": "+420%"
+            },
+            {
+              "label": "Ticket médio",
+              "value": "+75%"
+            }
+          ]
+        }
       }
     },
     {
       "raw": "Passamos por diversos profissionais e agências, mas nenhum que olhava o meu negócio como único, e isso foi diferente na Gape. Fizeram muito mais do que tráfego, trouxeram estratégia e um olhar de mercado que realmente fez a diferença!",
       "revised": {
-        "text": "Diferente de outras agências, a Gape olhou meu negócio como único. Trouxeram muito mais que tráfego: estratégia completa e visão de mercado que realmente transformou nossos resultados.",
-        "author": "[Cliente Placeholder]",
-        "position": "Fundador, E-commerce de Eletrônicos",
-        "result": "Estratégia completa e visão de mercado"
+        "text": "Tínhamos dificuldade em manter constância em resultado, no google, dependiamos muito do Facebook e isso nos deixava bem preocupado, Agora com a Gape cuidando do nosso Google as coisas fluem mantém 40% operação sem esforço",
+        "author": "Bruno",
+        "position": "CEO Ecommerce sem estoque",
+        "result": "Diversificação de canais e estabilidade",
+        "metrics": {
+          "main_result": "40%",
+          "main_result_label": "Operação Google",
+          "main_result_description": "sem esforço",
+          "secondary_metrics": [
+            {
+              "label": "Dependência FB",
+              "value": "-60%"
+            },
+            {
+              "label": "Estabilidade",
+              "value": "+200%"
+            }
+          ]
+        }
       }
     },
     {
       "raw": "Eles me ajudaram a melhorar minha estratégia de aquisição, investimos o mesmo valor mais agora com e um retorno de 10x o valor investido. Eu recomendo a Gape.",
       "revised": {
-        "text": "Melhoraram nossa estratégia de aquisição mantendo o mesmo investimento, mas agora temos um retorno 10x maior. Recomendo totalmente a Gape.",
-        "author": "[Cliente Placeholder]",
-        "position": "Diretor Comercial, E-commerce de Casa",
-        "result": "ROI 10x maior"
+        "text": "Melhoraram nossa estratégia de aquisição mantendo o mesmo investimento, mas agora temos um retorno 12x maior. Recomendo totalmente a Gape.",
+        "author": "Rafael Cardozo",
+        "position": "CEO Churrasking",
+        "result": "Faturamento duplicado sem aumentar verba",
+        "metrics": {
+          "main_result": "12x",
+          "main_result_label": "ROI Alcançado",
+          "main_result_description": "em 60 dias",
+          "secondary_metrics": [
+            {
+              "label": "Faturamento",
+              "value": "+500%"
+            },
+            {
+              "label": "Margem",
+              "value": "+90%"
+            }
+          ]
+        }
       }
     }
   ],
@@ -148,11 +193,10 @@
         "revenue": "Faturamento mensal atual"
       },
       "revenue_options": [
-        "Até R$ 50mil",
-        "R$ 50mil - R$ 100mil",
-        "R$ 100mil - R$ 500mil",
-        "R$ 500mil - R$ 1M",
-        "Acima de R$ 1M"
+        "Abaixo de 20 Mil",
+        "Entre 20 Mil a 40 Mil",
+        "Entre 40 Mil a 100 Mil",
+        "Acima de 100 Mil"
       ]
     }
   },

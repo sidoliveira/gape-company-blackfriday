@@ -319,3 +319,8 @@ textarea:focus-visible {
     background-position: 200% 0;
   }
 }
+
+/* Custom image height class */
+.img-height-4rem {
+  height: 4rem;
+}

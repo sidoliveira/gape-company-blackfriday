@@ -35,29 +35,146 @@ const CTA = () => {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   
   const ctaContent = contentMap.cta_form.revised
-  const revenueOptions = ctaContent.revenue_options
   
+  // Opções de faturamento atualizadas
+  const revenueOptions = [
+    'Abaixo de R$ 20 mil',
+    'R$ 20 mil - R$ 40 mil',
+    'R$ 40 mil - R$ 100 mil',
+    'Acima de R$ 100 mil'
+  ]
+  
+  // Função para mapear valores de faturamento com UUIDs
+  const mapFaturamento = (faturamento: string) => {
+    const mapping = {
+      'Abaixo de R$ 20 mil': '695596f6-e44a-45ee-b4a8-530ab508bfda',
+      'R$ 20 mil - R$ 40 mil': '4d513d2a-1c5c-4eb6-8e59-a102113ef6e5',
+      'R$ 40 mil - R$ 100 mil': 'eb6aa77a-5f62-4d49-ac62-e7071dc8606a',
+      'Acima de R$ 100 mil': '95a22bad-0010-40b9-8cf1-38950adc9665'
+    }
+    return mapping[faturamento as keyof typeof mapping] || '695596f6-e44a-45ee-b4a8-530ab508bfda'
+  }
+  
+  // Função para mapear valores de segmento com UUIDs
+  const mapSegmento = (segmento: string) => {
+    const mapping = {
+      'ecommerce-estoque': '7faee7d4-a626-43c0-8c25-7a6b1f11219a',
+      'dropshipping': '5b603319-9d31-43bc-b37a-f2c72f566d1c',
+      'venda-servico': '226e4ad1-71f8-49ac-b154-466b2b998f3d',
+      'outros': '46a41189-5a6d-42f6-8102-ab98f141642d'
+    }
+    return mapping[segmento as keyof typeof mapping] || '46a41189-5a6d-42f6-8102-ab98f141642d'
+  }
+  
+  // Função para obter parâmetros UTM da URL
+  const getUTMParams = () => {
+    const urlParams = new URLSearchParams(window.location.search)
+    return {
+      utm_source: urlParams.get('utm_source') || 'none',
+      utm_medium: urlParams.get('utm_medium') || 'none',
+      utm_campaign: urlParams.get('utm_campaign') || 'none',
+      utm_term: urlParams.get('utm_term') || 'none',
+      utm_content: urlParams.get('utm_content') || 'none'
+    }
+  }
+
+  // Função para validar WhatsApp
+  const validateWhatsApp = (whatsapp: string): boolean => {
+    const cleanWhatsApp = whatsapp.replace(/\D/g, '')
+    return cleanWhatsApp.length >= 10 && cleanWhatsApp.length <= 15
+  }
+
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {}
     
     if (!formData.name.trim()) {
-      newErrors.name = 'Nome é obrigatório'
+      newErrors.name = 'Por favor, digite seu nome completo.'
     }
     
     if (!formData.email.trim()) {
-      newErrors.email = 'E-mail é obrigatório'
+      newErrors.email = 'Por favor, digite seu e-mail.'
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'E-mail inválido'
+      newErrors.email = 'Por favor, digite um e-mail válido.'
+    }
+
+    if (formData.whatsapp.trim() && !validateWhatsApp(formData.whatsapp)) {
+      newErrors.whatsapp = 'Por favor, digite um número de WhatsApp válido.'
+    }
+
+    if (!formData.segment) {
+      newErrors.segment = 'Por favor, selecione o seguimento da sua empresa.'
     }
     
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
   
+  // Função para enviar dados para o n8n
+  const submitFormToN8N = async (): Promise<boolean> => {
+    try {
+      const utm = getUTMParams()
+      const segmentoUuid = mapSegmento(formData.segment)
+      const faturamentoUuid = mapFaturamento(formData.revenueRange)
+      
+      const submissionData = {
+        nome: formData.name,
+        email: formData.email,
+        whatsapp: formData.whatsapp,
+        segmento_empresa: segmentoUuid,
+        url_site: formData.website,
+        faturamento_mensal: faturamentoUuid,
+        utm_source: utm.utm_source,
+        utm_medium: utm.utm_medium,
+        utm_campaign: utm.utm_campaign,
+        utm_term: utm.utm_term,
+        utm_content: utm.utm_content,
+        faturamento_uuid: mapFaturamento(formData.revenueRange),
+        segmento_uuid: segmentoUuid,
+        consent: formData.consent,
+        timestamp: new Date().toISOString(),
+        page_url: window.location.href,
+        user_agent: navigator.userAgent,
+        referrer: document.referrer || 'none'
+      }
+
+      // URL do webhook do n8n
+      const n8nWebhookUrl = 'https://n8n.gapecompany.com/webhook/0b0dcd65-f207-4eb2-a27a-42c93e4faaeb'
+      
+      // Construir URL com parâmetros GET
+      const urlParams = new URLSearchParams()
+      Object.entries(submissionData).forEach(([key, value]) => {
+        if (value !== null && value !== undefined) {
+          urlParams.append(key, String(value))
+        }
+      })
+      
+      const fullUrl = `${n8nWebhookUrl}?${urlParams.toString()}`
+      
+      const response = await fetch(fullUrl, {
+        method: 'GET'
+      })
+
+      if (response.ok) {
+        return true
+      } else {
+        throw new Error(`Erro na resposta do servidor: ${response.status}`)
+      }
+    } catch (error) {
+      console.error('Erro ao enviar para n8n:', error)
+      throw error
+    }
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
     if (!validateForm()) {
+      // Focar no primeiro campo com erro
+      const firstErrorField = Object.keys(errors)[0]
+      const element = document.getElementById(firstErrorField)
+      if (element) {
+        element.focus()
+      }
       return
     }
     
@@ -68,31 +185,37 @@ const CTA = () => {
       // Track form submission
       gtmTrack.formSubmit(formData)
       
-      const response = await fetch('/api/lead', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
+      // Enviar para n8n
+      await submitFormToN8N()
       
-      if (response.ok) {
-        setSubmitStatus('success')
-        gtmTrack.generateLead(formData)
-        
-        // Reset form
-        setFormData({
-          name: '',
-          email: '',
-          whatsapp: '',
-          website: '',
-          segment: '',
-          revenueRange: '',
-          consent: false
+      // Também enviar para a API local (se existir)
+      try {
+        await fetch('/api/lead', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
         })
-      } else {
-        throw new Error('Erro ao enviar formulário')
+      } catch (apiError) {
+        console.warn('Erro na API local (não crítico):', apiError)
       }
+      
+      setSubmitStatus('success')
+      gtmTrack.generateLead(formData)
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        whatsapp: '',
+        website: '',
+        segment: '',
+        revenueRange: '',
+        consent: false
+      })
+      setErrors({})
+      
     } catch (error) {
       console.error('Form submission error:', error)
       setSubmitStatus('error')
@@ -101,17 +224,67 @@ const CTA = () => {
     }
   }
   
-  const handleInputChange = (field: keyof FormData, value: string | boolean) => {
-    setFormData(prev => ({ ...prev, [field]: value }))
+  const formatPhoneNumber = (value: string): string => {
+    // Remove todos os caracteres não numéricos
+    const numbers = value.replace(/\D/g, '')
     
-    // Clear error when user starts typing
-    if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: '' }))
+    // Limita a 11 dígitos
+    const limitedNumbers = numbers.slice(0, 11)
+    
+    // Aplica a máscara (XX) XXXXX-XXXX
+    if (limitedNumbers.length <= 2) {
+      return limitedNumbers
+    } else if (limitedNumbers.length <= 7) {
+      return `(${limitedNumbers.slice(0, 2)}) ${limitedNumbers.slice(2)}`
+    } else {
+      return `(${limitedNumbers.slice(0, 2)}) ${limitedNumbers.slice(2, 7)}-${limitedNumbers.slice(7)}`
+    }
+  }
+
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(email)
+  }
+
+  const handleInputChange = (field: keyof FormData, value: string | boolean) => {
+    let processedValue = value
+    
+    // Aplica formatação específica para o campo WhatsApp
+    if (field === 'whatsapp' && typeof value === 'string') {
+      processedValue = formatPhoneNumber(value)
+    }
+    
+    // Aplica formatação específica para o campo Website
+    if (field === 'website' && typeof value === 'string') {
+      // Se o usuário começar a digitar e não tiver protocolo, adiciona https://
+      if (value.length > 0 && !value.startsWith('http://') && !value.startsWith('https://')) {
+        processedValue = 'https://' + value
+      }
+    }
+    
+    setFormData(prev => ({ ...prev, [field]: processedValue }))
+    
+    // Limpar erro quando usuário começar a digitar
+    if (field === 'email') {
+      setErrors(prev => ({ ...prev, email: '' }))
+    } else {
+      // Clear error when user starts typing in other fields
+      if (errors[field]) {
+        setErrors(prev => ({ ...prev, [field]: '' }))
+      }
+    }
+  }
+
+  const handleEmailBlur = (email: string) => {
+    if (email.length > 0 && !validateEmail(email)) {
+      setErrors(prev => ({ ...prev, email: 'E-mail inválido' }))
+    } else {
+      setErrors(prev => ({ ...prev, email: '' }))
     }
   }
 
   return (
-    <section id="contact-form" className="section-padding bg-gape-black relative overflow-hidden">
+    <section id="contact-form" className="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-gape-black relative overflow-hidden">
       {/* Enhanced Background Elements */}
       <div className="absolute inset-0">
         {/* Animated gradient spheres */}
@@ -214,7 +387,7 @@ const CTA = () => {
                     <div className="text-xs text-gray-400 font-medium">Resposta</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-black text-green-400 mb-1">500+</div>
+                    <div className="text-2xl font-black text-green-400 mb-1">150+</div>
                     <div className="text-xs text-gray-400 font-medium">E-commerces</div>
                   </div>
                 </div>
@@ -297,11 +470,11 @@ const CTA = () => {
                       id="email"
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
+                      onBlur={(e) => handleEmailBlur(e.target.value)}
                       className={`w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all duration-300 ${errors.email ? 'border-red-500/50 ring-2 ring-red-500/20' : ''}`}
                       placeholder="seu@email.com"
                     />
                   </div>
-                  {errors.email && <p className="text-red-400 text-sm font-medium">{errors.email}</p>}
                 </div>
                 
                 {/* Enhanced Form Fields Grid */}
@@ -316,9 +489,10 @@ const CTA = () => {
                       id="whatsapp"
                       value={formData.whatsapp}
                       onChange={(e) => handleInputChange('whatsapp', e.target.value)}
-                      className="w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all duration-300"
+                      className={`w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all duration-300 ${errors.whatsapp ? 'border-red-500/50 ring-2 ring-red-500/20' : ''}`}
                       placeholder="(11) 99999-9999"
                     />
+                    {errors.whatsapp && <p className="text-red-400 text-sm font-medium">{errors.whatsapp}</p>}
                   </div>
                   
                   {/* Website */}
@@ -340,16 +514,21 @@ const CTA = () => {
                 {/* Segment */}
                 <div className="space-y-2">
                   <label htmlFor="segment" className="block text-sm font-bold text-white">
-                    Segmento do E-commerce
+                    Seguimento da Sua empresa
                   </label>
-                  <input
-                    type="text"
+                  <select
                     id="segment"
                     value={formData.segment}
                     onChange={(e) => handleInputChange('segment', e.target.value)}
-                    className="w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all duration-300"
-                    placeholder="Ex: Moda, Eletrônicos, Casa e Decoração"
-                  />
+                    className={`w-full px-4 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-brand-primary/50 focus:border-brand-primary/50 transition-all duration-300 appearance-none cursor-pointer ${errors.segment ? 'border-red-500/50 ring-2 ring-red-500/20' : ''}`}
+                  >
+                    <option value="" className="bg-gray-800 text-white">Selecione o seguimento da sua empresa</option>
+                    <option value="ecommerce-estoque" className="bg-gray-800 text-white">Ecommerce com Estoque</option>
+                    <option value="dropshipping" className="bg-gray-800 text-white">Dropshipping</option>
+                    <option value="venda-servico" className="bg-gray-800 text-white">Venda de serviço</option>
+                    <option value="outros" className="bg-gray-800 text-white">Outros</option>
+                  </select>
+                  {errors.segment && <p className="text-red-400 text-sm font-medium">{errors.segment}</p>}
                 </div>
                 
                 {/* Revenue Range */}
@@ -389,7 +568,7 @@ const CTA = () => {
                     ) : (
                       <div className="flex items-center justify-center gap-3">
                         <Rocket className="h-5 w-5 text-white group-hover:animate-pulse" />
-                        <span className="text-white font-bold text-lg">Quero Minha Consultoria Gratuita</span>
+                        <span className="text-white font-bold text-lg">Enviar</span>
                       </div>
                     )}
                   </div>

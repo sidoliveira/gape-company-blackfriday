@@ -6,13 +6,17 @@ import { BarChart3, Users, ShoppingBag, TrendingUp } from 'lucide-react'
 const Logos = () => {
   // Real client logos based on the images provided
   const logos = [
-    { name: 'ADMINER', width: 120, height: 40 },
-    { name: 'DOMINAR', width: 140, height: 40 },
-    { name: 'MURANO', width: 100, height: 40 },
-    { name: 'Nazaré', width: 130, height: 40 },
-    { name: 'SunKiDS', width: 110, height: 40 },
-    { name: 'WAHANA', width: 125, height: 40 },
-    { name: 'ANDRE METRO', width: 135, height: 40 },
+    { name: 'Adminer', src: '/images/loja-adminer.png', width: 120, height: 40 },
+    { name: 'Alpas Joias', src: '/images/loja-alpas-joias.png', width: 140, height: 40 },
+    { name: 'Dom Conrado', src: '/images/loja-dom-conrado.png', width: 100, height: 40 },
+    { name: 'Duda Castro', src: '/images/loja-duda-castro.png', width: 130, height: 40 },
+    { name: 'Gemany', src: '/images/loja-gemany.png', width: 110, height: 40 },
+    { name: 'Kaype Store', src: '/images/loja-kaypestore.png', width: 125, height: 40 },
+    { name: 'Modernlar', src: '/images/loja-modernlar.png', width: 135, height: 40 },
+    { name: 'Onda Marina', src: '/images/loja-ondamarina.png', width: 120, height: 40 },
+    { name: 'Ortopés', src: '/images/loja-ortopés.png', width: 140, height: 40 },
+    { name: 'Tudo a Kilo', src: '/images/loja-tudoakilo.png', width: 100, height: 40 },
+    { name: 'Vennanci', src: '/images/loja-vennanci.png', width: 130, height: 40 },
   ]
 
   const [isHovered, setIsHovered] = useState(false)
@@ -42,7 +46,7 @@ const Logos = () => {
   ]
 
   return (
-    <section className="bg-gape-dark-soft py-16 sm:py-20 border-y border-gape-pink/10">
+    <section className="section-padding bg-gape-dark-soft border-y border-gape-pink/10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 sm:mb-14">
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gape-white mb-3 sm:mb-4 px-4 sm:px-0">
@@ -89,14 +93,18 @@ const Logos = () => {
                   className="flex-shrink-0 opacity-60 transition-opacity duration-300 hover:opacity-100"
                 >
                   <div
-                    className="flex items-center justify-center rounded-lg border border-gape-pink/20 bg-gape-dark-soft hover:border-gape-pink/40 transition-all duration-300"
+                    className="flex items-center justify-center rounded-lg border border-gape-pink/20 bg-gape-dark-soft hover:border-gape-pink/40 transition-all duration-300 p-2"
                     style={{ 
                       width: Math.max(80, logo.width * 0.7), 
                       height: Math.max(30, logo.height * 0.7),
                       minWidth: '80px'
                     }}
                   >
-                    <span className="text-xs sm:text-sm font-medium px-2 text-gape-white">{logo.name}</span>
+                    <img 
+                      src={logo.src} 
+                      alt={logo.name}
+                      className="max-w-full max-h-full object-contain filter brightness-75 hover:brightness-100 transition-all duration-300"
+                    />
                   </div>
                 </div>
               ))}
@@ -108,14 +116,18 @@ const Logos = () => {
                   className="flex-shrink-0 opacity-60 transition-opacity duration-300 hover:opacity-100"
                 >
                   <div
-                    className="flex items-center justify-center rounded-lg border border-gape-pink/20 bg-gape-dark-soft hover:border-gape-pink/40 transition-all duration-300"
+                    className="flex items-center justify-center rounded-lg border border-gape-pink/20 bg-gape-dark-soft hover:border-gape-pink/40 transition-all duration-300 p-2"
                     style={{ 
                       width: Math.max(80, logo.width * 0.7), 
                       height: Math.max(30, logo.height * 0.7),
                       minWidth: '80px'
                     }}
                   >
-                    <span className="text-xs sm:text-sm font-medium px-2 text-gape-white">{logo.name}</span>
+                    <img 
+                      src={logo.src} 
+                      alt={logo.name}
+                      className="max-w-full max-h-full object-contain filter brightness-75 hover:brightness-100 transition-all duration-300"
+                    />
                   </div>
                 </div>
               ))}
@@ -123,11 +135,7 @@ const Logos = () => {
           </div>
           
           {/* Note for replacing placeholders */}
-          <div className="mt-6 text-center">
-            <p className="text-xs text-gape-gray-light">
-              * Logos de clientes serão substituídos pelos reais conforme autorização
-            </p>
-          </div>
+          
         </div>
       </div>
       

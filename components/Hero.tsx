@@ -1,9 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { ChevronDown, ArrowRight, BarChart2, ShoppingCart, TrendingUp, Phone, Mail, Award, Star, X, Target, Zap } from 'lucide-react'
+import { ChevronDown, ArrowRight, BarChart2, ShoppingCart, TrendingUp, Phone, Mail, Award, Star, X, Target } from 'lucide-react'
 import contentMap from '@/content/content-map.json'
-import Logo from './Logo'
 
 const Hero = () => {
   const [selectedRevenue, setSelectedRevenue] = useState('')
@@ -33,41 +32,7 @@ const Hero = () => {
   }
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gape-dark pt-24 pb-12 sm:pb-16 lg:pt-32 lg:pb-28">
-      {/* Enhanced Header */}
-      <header className="absolute top-0 left-0 right-0 z-20 bg-gradient-to-r from-gape-dark/95 via-gape-dark/90 to-gape-dark/95 backdrop-blur-xl border-b border-brand-primary/20 shadow-lg">
-        {/* Top bar removido */}
-        
-        {/* Main navigation */}
-        <div className="container mx-auto px-4 py-4 sm:py-6">
-          <div className="flex items-center justify-between">
-            {/* Logo and tagline */}
-            <div className="flex items-center gap-4">
-              <Logo variant="white" width={140} height={42} className="sm:w-[160px] sm:h-[48px]" />
-              <div className="hidden lg:block">
-                <div className="text-xs text-brand-primary/90 font-medium">ESPECIALISTAS EM</div>
-                <div className="text-sm text-gape-white font-semibold">Google Ads para E-commerce</div>
-              </div>
-            </div>
-            
-            {/* Navigation and CTA */}
-            <div className="flex items-center gap-6">
-              {/* Performance badge removido */}
-              
-              {/* Quick CTA */}
-              <button
-                onClick={() => handleCTAClick('primary')}
-                className="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-brand-primary/90 to-brand-600 text-white text-sm font-semibold rounded-lg hover:shadow-lg hover:shadow-brand-primary/25 transition-all duration-300 hover:scale-105"
-              >
-                <Zap className="h-4 w-4" />
-                Consultoria Gratuita
-              </button>
-              
-              {/* Mobile menu button removido */}
-            </div>
-          </div>
-        </div>
-      </header>
+    <section className="relative min-h-screen overflow-hidden bg-gape-dark py-12 lg:py-16">
       
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
@@ -83,7 +48,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_50%,#000_40%,transparent_100%)]" />
       </div>
       
-      <div className="container mx-auto px-4 relative mt-20 sm:mt-24">
+      <div className="container mx-auto px-4 relative">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[70vh] sm:min-h-[80vh]">
           {/* Left content */}
           <div className="text-left">
@@ -101,7 +66,7 @@ const Hero = () => {
             
             {/* Subheadline */}
             <p className={`mt-4 sm:mt-6 max-w-2xl text-base leading-7 text-gape-gray-light sm:text-lg sm:leading-8 lg:text-xl transition-all duration-700 delay-200 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-4'}`}>
-              O caminho para o sucesso do seu E-commerce já foi traçado. Só falta você se juntar aos <span className="text-brand-primary/90 font-semibold">+150 E-commerces</span> que já alcançaram <span className="text-brand-primary/90 font-semibold">+R$50 milhões em vendas.</span>
+              O caminho para o sucesso do seu E-commerce já foi traçado. Só falta você se juntar aos <span className="text-brand-primary/90 font-semibold">150+ E-commerces</span> que já alcançaram <span className="text-brand-primary/90 font-semibold">+R$50 milhões em vendas.</span>
             </p>
           
             {/* CTA buttons */}
@@ -124,20 +89,15 @@ const Hero = () => {
             
             {/* Social proof */}
             <div className={`mt-8 sm:mt-10 flex items-center gap-3 sm:gap-4 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-4'}`}>
-              <div className="flex -space-x-3">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-brand-primary/90 flex items-center justify-center text-xs font-bold text-white border-2 border-gape-dark">+</div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-400 border-2 border-gape-dark overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-blue-400/80 to-blue-600/80 flex items-center justify-center text-white text-xs font-bold">JM</div>
-                </div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-500 border-2 border-gape-dark overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-green-400/80 to-green-600/80 flex items-center justify-center text-white text-xs font-bold">AS</div>
-                </div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-600 border-2 border-gape-dark overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-purple-400/80 to-purple-600/80 flex items-center justify-center text-white text-xs font-bold">MR</div>
-                </div>
+              <div className="flex items-center">
+                <img 
+                  src="/images/fotos-cliente-head.webp" 
+                  alt="Clientes satisfeitos da Gape Company" 
+                  className="img-height-4rem sm:h-24 w-auto rounded-lg"
+                />
               </div>
               <div className="text-gape-gray-light">
-                <span className="text-brand-primary/90 font-semibold text-sm sm:text-base">+150</span>
+                <span className="text-brand-primary/90 font-semibold text-sm sm:text-base">150+</span>
                 <span className="text-xs sm:text-sm block">Cases de Sucesso. O próximo pode ser o seu.</span>
               </div>
             </div>

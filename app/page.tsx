@@ -1,3 +1,4 @@
+import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import Logos from '@/components/Logos'
 import Pillars from '@/components/Pillars'
@@ -8,14 +9,17 @@ import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Hero />
-      <Logos />
-      <Pillars />
-      <Testimonials />
-      <BadgesMetrics />
-      <CTA />
-      <Footer />
-    </main>
+    <>
+      <Header />
+      <main className="min-h-screen">
+        <CTA />
+        <Logos />
+        <Pillars />
+        <Testimonials />
+        <BadgesMetrics />
+        <Hero />
+        <Footer />
+      </main>
+    </>
   )
 }

@@ -1,0 +1,999 @@
+<html lang="pt-BR"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gape Company - Formulário</title>
+    <meta name="description" content="Marketing Digital Para Vender Mais">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .text-primary { color: #1f2937; }
+        .bg-gradient-custom {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .shadow-custom {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        }
+        .bg-image {
+            background-image: url('bg-first-step-2.webp');
+        }
+        
+        /* Animações suaves para transições */
+        .step-container {
+            opacity: 1;
+            transform: translateX(0);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .step-container.step-exit {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+        
+        .step-container.step-enter {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+        
+        .step-container.step-enter-active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Animação da barra de progresso */
+        #progressBar {
+            transition: width 0.5s ease-in-out;
+        }
+        
+        /* Animação para botões */
+        button {
+            transition: all 0.2s ease-in-out;
+        }
+        
+        /* Animação para campos de input */
+        input, label {
+            transition: all 0.2s ease-in-out;
+        }
+        
+
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0}.fixed{position:fixed}.relative{position:relative}.inset-0{inset:0px}.bottom-0{bottom:0px}.z-10{z-index:10}.z-50{z-index:50}.m-auto{margin:auto}.mx-4{margin-left:1rem;margin-right:1rem}.mx-auto{margin-left:auto;margin-right:auto}.mb-12{margin-bottom:3rem}.mb-14{margin-bottom:3.5rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mr-4{margin-right:1rem}.mt-12{margin-top:3rem}.mt-2{margin-top:0.5rem}.mt-8{margin-top:2rem}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-14{height:3.5rem}.h-16{height:4rem}.h-2{height:0.5rem}.h-2\.5{height:0.625rem}.h-5{height:1.25rem}.h-8{height:2rem}.h-\[22px\]{height:22px}.h-auto{height:auto}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-16{width:4rem}.w-2\.5{width:0.625rem}.w-5{width:1.25rem}.w-8{width:2rem}.w-full{width:100%}.max-w-\[705px\]{max-width:705px}.max-w-\[880px\]{max-width:880px}.max-w-md{max-width:28rem}.max-w-screen-xl{max-width:1280px}.cursor-pointer{cursor:pointer}.cursor-not-allowed{cursor:not-allowed}.flex-col{flex-direction:column}.items-end{align-items:flex-end}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-5{gap:1.25rem}.gap-\[10px\]{gap:10px}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.rounded-b-xl{border-bottom-right-radius:0.75rem;border-bottom-left-radius:0.75rem}.rounded-t-2xl{border-top-left-radius:1rem;border-top-right-radius:1rem}.border{border-width:1px}.border-2{border-width:2px}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219 / var(--tw-border-opacity, 1))}.bg-\[\#F20458\]{--tw-bg-opacity:1;background-color:rgb(242 4 88 / var(--tw-bg-opacity, 1))}.bg-\[\#FDE5E5\]{--tw-bg-opacity:1;background-color:rgb(253 229 229 / var(--tw-bg-opacity, 1))}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-gray-200{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity, 1))}.bg-green-100{--tw-bg-opacity:1;background-color:rgb(220 252 231 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-opacity-50{--tw-bg-opacity:0.5}.bg-cover{background-size:cover}.bg-center{background-position:center}.object-contain{object-fit:contain}.p-4{padding:1rem}.p-8{padding:2rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-8{padding-left:2rem;padding-right:2rem}.px-9{padding-left:2.25rem;padding-right:2.25rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.tracking-wider{letter-spacing:0.05em}.text-\[\#9C9C9C\]{--tw-text-opacity:1;color:rgb(156 156 156 / var(--tw-text-opacity, 1))}.text-\[\#F20458\]{--tw-text-opacity:1;color:rgb(242 4 88 / var(--tw-text-opacity, 1))}.text-\[\#FA8F8F\]{--tw-text-opacity:1;color:rgb(250 143 143 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity, 1))}.text-green-500{--tw-text-opacity:1;color:rgb(34 197 94 / var(--tw-text-opacity, 1))}.text-red-500{--tw-text-opacity:1;color:rgb(239 68 68 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-200{transition-duration:200ms}.duration-300{transition-duration:300ms}.hover\:bg-\[\#d1043e\]:hover{--tw-bg-opacity:1;background-color:rgb(209 4 62 / var(--tw-bg-opacity, 1))}.hover\:bg-gray-50:hover{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.focus\:border-transparent:focus{border-color:transparent}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-\[\#F20458\]:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(242 4 88 / var(--tw-ring-opacity, 1))}@media (min-width: 640px){.sm\:px-0{padding-left:0px;padding-right:0px}}@media (min-width: 768px){.md\:flex{display:flex}.md\:h-\[122px\]{height:122px}.md\:h-\[50vh\]{height:50vh}.md\:max-w-\[880px\]{max-width:880px}.md\:flex-row{flex-direction:row}.md\:justify-end{justify-content:flex-end}.md\:px-8{padding-left:2rem;padding-right:2rem}.md\:py-0{padding-top:0px;padding-bottom:0px}.md\:text-2xl{font-size:1.5rem;line-height:2rem}}@media (min-width: 1024px){.lg\:h-auto{height:auto}.lg\:h-full{height:100%}.lg\:w-4\/6{width:66.666667%}.lg\:w-\[52px\]{width:52px}.lg\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.lg\:rounded-l-2xl{border-top-left-radius:1rem;border-bottom-left-radius:1rem}.lg\:rounded-r-none{border-top-right-radius:0px;border-bottom-right-radius:0px}.lg\:px-0{padding-left:0px;padding-right:0px}.lg\:pr-\[52px\]{padding-right:52px}}@media (min-width: 1280px){.xl\:w-full{width:100%}}</style></head>
+<body class="bg-white">
+    <main class="grid min-h-screen bg-white px-8 lg:grid-cols-2 sm:px-0 lg:pr-[52px]">
+        <!-- Seção da imagem de fundo -->
+        <div class="bg-image hidden md:flex flex-col justify-end items-end transition-all bg-cover bg-center md:h-[50vh] lg:h-auto">
+            <div class="relative bottom-0 z-10 flex bg-white w-full h-[22px] rounded-t-2xl lg:h-full lg:w-[52px] lg:rounded-l-2xl lg:rounded-r-none"></div>
+        </div>
+        
+        <!-- Seção do formulário -->
+        <div class="w-full flex flex-col justify-between relative rounded-2xl bg-white md:h-[50vh] md:px-8 lg:px-0 lg:h-full">
+            <!-- Header -->
+            <header class="flex justify-between py-8">
+                <button id="headerBackBtn" class="flex items-center cursor-not-allowed" disabled="">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" version="1.1" viewBox="0 0 16 16" class="text-gray-400 text-2xl transition-colors duration-200" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.293 13.707l-5-5c-0.391-0.39-0.391-1.024 0-1.414l5-5c0.391-0.391 1.024-0.391 1.414 0s0.391 1.024 0 1.414l-3.293 3.293h9.586c0.552 0 1 0.448 1 1s-0.448 1-1 1h-9.586l3.293 3.293c0.195 0.195 0.293 0.451 0.293 0.707s-0.098 0.512-0.293 0.707c-0.391 0.391-1.024 0.391-1.414 0z"></path>
+                    </svg>
+                </button>
+                
+                <!-- Logo Gape Company -->
+                <img src="logo-gape.webp" alt="Gape Company" width="56" height="56" class="object-contain">
+                
+                <div class="hidden md:flex"></div>
+            </header>
+            
+            <!-- Conteúdo principal -->
+            <div class="h-full flex flex-col items-center justify-center md:px-8 lg:px-0 lg:h-full">
+                <!-- Formulário -->
+                <form id="leadForm" class="flex flex-col w-full justify-center items-center max-w-[705px] mx-auto md:max-w-[880px]">
+                    <!-- Indicador de progresso -->
+                    <div class="w-full mb-8">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm text-gray-500">Etapa <span id="currentStep">1</span> de 6</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div id="progressBar" class="bg-[#F20458] h-2 rounded-full transition-all duration-300" style="width: 16.6667%;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Etapa 1: Nome -->
+                    <div id="step1" class="step-container w-full">
+                        <section class="w-full flex flex-col gap-2">
+                            <span class="text-[#9C9C9C] font-medium text-base">É um prazer te receber aqui!</span>
+                            <p class="font-medium text-xl md:text-2xl">Como devemos te chamar?</p>
+                        </section>
+                        
+                        <section class="w-full mt-12">
+                            <input type="text" placeholder="Inserir nome" class="h-14 w-full border border-gray-300 rounded-xl px-4 py-3 text-lg text-primary font-medium focus:outline-none focus:ring-2 focus:ring-[#F20458] focus:border-transparent transition-all" name="nome" id="nome" required="">
+                        </section>
+                    </div>
+                    
+                    <!-- Etapa 2: E-mail -->
+                    <div id="step2" class="step-container w-full hidden">
+                        <section class="w-full flex flex-col gap-2">
+                            <span class="text-[#9C9C9C] font-medium text-base">Ótimo!</span>
+                            <p class="font-medium text-xl md:text-2xl">Qual e-mail você mais usa?</p>
+                        </section>
+                        
+                        <section class="w-full mt-12">
+                            <input type="email" placeholder="Inserir e-mail" class="h-14 w-full border border-gray-300 rounded-xl px-4 py-3 text-lg text-primary font-medium focus:outline-none focus:ring-2 focus:ring-[#F20458] focus:border-transparent transition-all" name="email" id="email" required="">
+                            <div id="emailError" class="mt-2 text-sm text-red-500 hidden">
+                                Por favor, digite um e-mail válido
+                            </div>
+                        </section>
+                    </div>
+                    
+                    <!-- Etapa 3: WhatsApp -->
+                     <div id="step3" class="step-container w-full hidden">
+                         <section class="w-full flex flex-col gap-2">
+                             <span class="text-[#9C9C9C] font-medium text-base">Perfeito!</span>
+                             <p class="font-medium text-xl md:text-2xl">Qual o seu Whatsapp?</p>
+                         </section>
+                         
+                         <section class="w-full mt-12">
+                             <input type="tel" placeholder="(99) 99999-9999" class="h-14 w-full border border-gray-300 rounded-xl px-4 py-3 text-lg text-primary font-medium focus:outline-none focus:ring-2 focus:ring-[#F20458] focus:border-transparent transition-all" name="whatsapp" id="whatsapp" required="">
+                         </section>
+                     </div>
+                     
+                     <!-- Etapa 4: Segmento da Empresa -->
+                     <div id="step4" class="step-container w-full hidden">
+                         <section class="w-full flex flex-col gap-2">
+                             <span class="text-[#9C9C9C] font-medium text-base">Quase lá!</span>
+                             <p class="font-medium text-xl md:text-2xl">Qual segmento da sua empresa?</p>
+                         </section>
+                         
+                         <section class="w-full mt-12">
+                             <div class="space-y-3">
+                                 <label class="flex items-center p-4 border border-gray-300 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors">
+                                     <input type="radio" name="segmento" value="ecommerce-estoque" class="sr-only" required="">
+                                     <div class="flex items-center w-full">
+                                         <div class="w-5 h-5 border-2 border-gray-300 rounded-full mr-4 flex items-center justify-center radio-custom">
+                                             <div class="w-2.5 h-2.5 bg-[#F20458] rounded-full hidden radio-dot"></div>
+                                         </div>
+                                         <span class="text-lg font-medium text-gray-700">Ecommerce com Estoque</span>
+                                     </div>
+                                 </label>
+                                 
+                                 <label class="flex items-center p-4 border border-gray-300 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors">
+                                     <input type="radio" name="segmento" value="dropshipping" class="sr-only" required="">
+                                     <div class="flex items-center w-full">
+                                         <div class="w-5 h-5 border-2 border-gray-300 rounded-full mr-4 flex items-center justify-center radio-custom">
+                                             <div class="w-2.5 h-2.5 bg-[#F20458] rounded-full hidden radio-dot"></div>
+                                         </div>
+                                         <span class="text-lg font-medium text-gray-700">Dropshipping</span>
+                                     </div>
+                                 </label>
+                                 
+                                 <label class="flex items-center p-4 border border-gray-300 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors">
+                                     <input type="radio" name="segmento" value="venda-servico" class="sr-only" required="">
+                                     <div class="flex items-center w-full">
+                                         <div class="w-5 h-5 border-2 border-gray-300 rounded-full mr-4 flex items-center justify-center radio-custom">
+                                             <div class="w-2.5 h-2.5 bg-[#F20458] rounded-full hidden radio-dot"></div>
+                                         </div>
+                                         <span class="text-lg font-medium text-gray-700">Venda de serviço</span>
+                                     </div>
+                                 </label>
+                                 
+                                 <label class="flex items-center p-4 border border-gray-300 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors">
+                                     <input type="radio" name="segmento" value="outros" class="sr-only" required="">
+                                     <div class="flex items-center w-full">
+                                         <div class="w-5 h-5 border-2 border-gray-300 rounded-full mr-4 flex items-center justify-center radio-custom">
+                                             <div class="w-2.5 h-2.5 bg-[#F20458] rounded-full hidden radio-dot"></div>
+                                         </div>
+                                         <span class="text-lg font-medium text-gray-700">Outros</span>
+                                     </div>
+                                 </label>
+                             </div>
+                         </section>
+                     </div>
+                     
+                     <!-- Etapa 5: URL do Site -->
+                     <div id="step5" class="step-container w-full hidden">
+                         <section class="w-full flex flex-col gap-2">
+                             <span class="text-[#9C9C9C] font-medium text-base">Quase terminando!</span>
+                             <p class="font-medium text-xl md:text-2xl">Url do Site:</p>
+                         </section>
+                         
+                         <section class="w-full mt-12">
+                             <input type="url" placeholder="https://" class="h-14 w-full border border-gray-300 rounded-xl px-4 py-3 text-lg text-primary font-medium focus:outline-none focus:ring-2 focus:ring-[#F20458] focus:border-transparent transition-all" name="url_site" id="url_site" required="">
+                         </section>
+                     </div>
+                     
+                     <!-- Etapa 6: Faturamento Mensal -->
+                     <div id="step6" class="step-container w-full hidden">
+                         <section class="w-full flex flex-col gap-2">
+                             <span class="text-[#9C9C9C] font-medium text-base">Quase terminando!</span>
+                             <p class="font-medium text-xl md:text-2xl">Qual seu faturamento mensal?</p>
+                         </section>
+                         
+                         <section class="w-full mt-12">
+                             <div class="space-y-3">
+                                 <label class="flex items-center p-4 border border-gray-300 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors">
+                                     <input type="radio" name="faturamento" value="abaixo-20mil" class="sr-only" required="">
+                                     <div class="flex items-center w-full">
+                                         <div class="w-5 h-5 border-2 border-gray-300 rounded-full mr-4 flex items-center justify-center radio-custom">
+                                             <div class="w-2.5 h-2.5 bg-[#F20458] rounded-full hidden radio-dot"></div>
+                                         </div>
+                                         <span class="text-lg font-medium text-gray-700">Abaixo de 20 Mil</span>
+                                     </div>
+                                 </label>
+                                 
+                                 <label class="flex items-center p-4 border border-gray-300 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors">
+                                     <input type="radio" name="faturamento" value="20mil-40mil" class="sr-only" required="">
+                                     <div class="flex items-center w-full">
+                                         <div class="w-5 h-5 border-2 border-gray-300 rounded-full mr-4 flex items-center justify-center radio-custom">
+                                             <div class="w-2.5 h-2.5 bg-[#F20458] rounded-full hidden radio-dot"></div>
+                                         </div>
+                                         <span class="text-lg font-medium text-gray-700">Entre 20 Mil a 40 Mil</span>
+                                     </div>
+                                 </label>
+                                 
+                                 <label class="flex items-center p-4 border border-gray-300 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors">
+                                     <input type="radio" name="faturamento" value="40mil-100mil" class="sr-only" required="">
+                                     <div class="flex items-center w-full">
+                                         <div class="w-5 h-5 border-2 border-gray-300 rounded-full mr-4 flex items-center justify-center radio-custom">
+                                             <div class="w-2.5 h-2.5 bg-[#F20458] rounded-full hidden radio-dot"></div>
+                                         </div>
+                                         <span class="text-lg font-medium text-gray-700">Entre 40 Mil a 100 Mil</span>
+                                     </div>
+                                 </label>
+                                 
+                                 <label class="flex items-center p-4 border border-gray-300 rounded-xl cursor-pointer hover:bg-gray-50 transition-colors">
+                                     <input type="radio" name="faturamento" value="acima-100mil" class="sr-only" required="">
+                                     <div class="flex items-center w-full">
+                                         <div class="w-5 h-5 border-2 border-gray-300 rounded-full mr-4 flex items-center justify-center radio-custom">
+                                             <div class="w-2.5 h-2.5 bg-[#F20458] rounded-full hidden radio-dot"></div>
+                                         </div>
+                                         <span class="text-lg font-medium text-gray-700">Acima de 100 Mil</span>
+                                     </div>
+                                 </label>
+                             </div>
+                         </section>
+                     </div>
+                     
+
+                    
+                    <!-- Botão de navegação -->
+                    <section class="w-full flex justify-center md:justify-end items-center max-w-screen-xl mx-auto mt-8 mb-12">
+                        <button type="button" id="nextBtn" class="bg-[#F20458] text-white flex items-center gap-[10px] py-3 px-9 font-bold tracking-wider text-sm rounded-xl border hover:bg-[#d1043e] transition-colors duration-200">
+                    PROSSEGUIR
+                    <svg width="15" height="15" fill="#ffff">
+                        <path fill-rule="evenodd" d="M6.232 7.5L.94 2.207 2.354.793 9.06 7.5l-6.707 6.707-1.415-1.414L6.232 7.5z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                    </section>
+                </form>
+                
+                <!-- Depoimento Dinâmico -->
+                <article id="testimonialContainer" class="rounded-xl mb-14 mx-auto max-w-[880px] w-full shadow-custom">
+                    <header class="h-auto flex items-center flex-col gap-3 px-6 py-6 md:py-0 md:flex-row md:h-[122px]">
+                        <!-- Ícone de aspas -->
+                        <svg style="min-height:24px;min-width:24px;width:24px;height:24px" class="text-[#F20458]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 22 17">
+                            <path fill="#F20458" d="M5.824 7.457c.97 0 1.736.336 2.296 1.008.56.635.84 1.53.84 2.688 0 1.232-.448 2.37-1.344 3.416-.859 1.008-1.941 1.512-3.248 1.512-1.381 0-2.464-.448-3.248-1.344-.747-.933-1.12-2.24-1.12-3.92 0-2.165.485-4.106 1.456-5.824.97-1.717 2.408-3.378 4.312-4.984l2.184 2.072c-2.277 1.867-3.565 3.77-3.864 5.712.485-.224 1.064-.336 1.736-.336zm12.32 0c.97 0 1.736.336 2.296 1.008.56.635.84 1.53.84 2.688 0 1.232-.448 2.37-1.344 3.416-.859 1.008-1.941 1.512-3.248 1.512-1.381 0-2.464-.448-3.248-1.344-.747-.933-1.12-2.24-1.12-3.92 0-2.165.485-4.106 1.456-5.824.97-1.717 2.408-3.378 4.312-4.984l2.184 2.072c-2.277 1.867-3.565 3.77-3.864 5.712.485-.224 1.064-.336 1.736-.336z"></path>
+                        </svg>
+                        <p id="testimonialText" class="text-[#9C9C9C] text-xl font-medium">Eu sinceramente não me vejo trabalhando sem vocês. Não crescendo, não aprimorando...</p>
+                    </header>
+                    <footer class="px-6 py-1 bg-[#FDE5E5] rounded-b-xl">
+                        <p id="testimonialAuthor" class="text-[#FA8F8F] text-sm">Marcos Marra, Sócio da Litoral Verde Viagens</p>
+                    </footer>
+                </article>
+            </div>
+            
+            <!-- Footer -->
+            <div class="py-4 flex flex-col gap-5">
+                <p class="m-auto px-5 font-normal text-xs text-center lg:w-4/6 xl:w-full">
+                    Ao clicar em PROSSEGUIR você automaticamente concordo com os 
+                    <a class="underline" href="#">termos de uso</a> 
+                    e 
+                    <a class="underline" href="#">política de privacidade</a>
+                </p>
+                <h2 class="text-xs text-center text-primary">© Copyright 2012-2024 Gape Company</h2>
+            </div>
+        </div>
+    </main>
+    
+
+    
+    <!-- Modal de sucesso -->
+    <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white rounded-xl p-8 max-w-md mx-4">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Obrigado!</h3>
+                <p class="text-gray-600 mb-6">Seu cadastro foi realizado com sucesso. Em breve entraremos em contato!</p>
+                <button onclick="closeModal()" class="bg-[#F20458] text-white px-6 py-2 rounded-lg hover:bg-[#d1043e] transition-colors" fechar="" <="" button="">
+            </button></div>
+        </div>
+    </div>
+    
+    <script>
+        // Variáveis globais
+        let currentStep = 1;
+        const totalSteps = 6;
+        const STORAGE_KEY = 'gape_form_data';
+        const STORAGE_STEP_KEY = 'gape_form_step';
+        let autoSaveTimeout = null;
+        
+        // Array de depoimentos para cada etapa
+        const testimonials = [
+            {
+                text: "Eu sinceramente não me vejo trabalhando sem vocês. Não crescendo, não aprimorando...",
+                author: "Marcos Marra, Sócio da Litoral Verde Viagens"
+            },
+            {
+                text: "A Gape transformou completamente nossa estratégia digital. Resultados incríveis!",
+                author: "Ana Silva, CEO da TechStart"
+            },
+            {
+                text: "Profissionais excepcionais que realmente entendem do negócio. Recomendo!",
+                author: "Carlos Mendes, Diretor da InnovaCorp"
+            },
+            {
+                text: "O ROI que conseguimos com a Gape superou todas as nossas expectativas.",
+                author: "Marina Costa, CMO da GrowthLab"
+            },
+            {
+                text: "Parceria estratégica que nos levou a um novo patamar no mercado digital.",
+                author: "Roberto Santos, Fundador da DigitalPro"
+            },
+            {
+                text: "Equipe dedicada e resultados consistentes. A Gape é nossa escolha número 1!",
+                author: "Fernanda Lima, Diretora da ScaleTech"
+            }
+        ];
+        
+        // Elementos DOM
+        const nextBtn = document.getElementById('nextBtn');
+        const headerBackBtn = document.getElementById('headerBackBtn');
+        const currentStepSpan = document.getElementById('currentStep');
+        const progressBar = document.getElementById('progressBar');
+        
+        // Função para atualizar depoimento baseado na etapa
+        function updateTestimonial(step) {
+            const testimonialIndex = (step - 1) % testimonials.length;
+            const testimonial = testimonials[testimonialIndex];
+            
+            const testimonialText = document.getElementById('testimonialText');
+            const testimonialAuthor = document.getElementById('testimonialAuthor');
+            
+            if (testimonialText && testimonialAuthor) {
+                testimonialText.textContent = testimonial.text;
+                testimonialAuthor.textContent = testimonial.author;
+            }
+        }
+        
+        // Máscara para telefone
+        function formatPhone(input) {
+            let value = input.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+                if (value.length < 14) {
+                    value = value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+                }
+            }
+            input.value = value;
+        }
+        
+        // Aplicar máscara ao campo WhatsApp
+        document.getElementById('whatsapp').addEventListener('input', function() {
+            formatPhone(this);
+        });
+        
+        // Funções de salvamento automático
+        function saveFormData() {
+            const formData = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                url_site: document.getElementById('url_site').value,
+                segmento: document.querySelector('input[name="segmento"]:checked')?.value || '',
+                faturamento: document.querySelector('input[name="faturamento"]:checked')?.value || '',
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+            localStorage.setItem(STORAGE_STEP_KEY, currentStep.toString());
+        }
+        
+        function loadFormData() {
+            try {
+                const savedData = localStorage.getItem(STORAGE_KEY);
+                const savedStep = localStorage.getItem(STORAGE_STEP_KEY);
+                
+                if (savedData) {
+                    const formData = JSON.parse(savedData);
+                    
+                    // Verificar se os dados não são muito antigos (24 horas)
+                    const savedTime = new Date(formData.timestamp);
+                    const now = new Date();
+                    const hoursDiff = (now - savedTime) / (1000 * 60 * 60);
+                    
+                    if (hoursDiff < 24) {
+                        // Restaurar dados dos campos
+                        if (formData.nome) document.getElementById('nome').value = formData.nome;
+                        if (formData.email) document.getElementById('email').value = formData.email;
+                        if (formData.whatsapp) document.getElementById('whatsapp').value = formData.whatsapp;
+                        if (formData.url_site) document.getElementById('url_site').value = formData.url_site;
+                        
+                        // Restaurar radio buttons
+                        if (formData.segmento) {
+                            const segmentoRadio = document.querySelector(`input[name="segmento"][value="${formData.segmento}"]`);
+                            if (segmentoRadio) {
+                                segmentoRadio.checked = true;
+                                segmentoRadio.dispatchEvent(new Event('change'));
+                            }
+                        }
+                        
+                        if (formData.faturamento) {
+                            const faturamentoRadio = document.querySelector(`input[name="faturamento"][value="${formData.faturamento}"]`);
+                            if (faturamentoRadio) {
+                                faturamentoRadio.checked = true;
+                                faturamentoRadio.dispatchEvent(new Event('change'));
+                            }
+                        }
+                        
+
+                        
+                        // Restaurar etapa
+                        if (savedStep) {
+                            currentStep = parseInt(savedStep);
+                            showStep(currentStep, false); // false para não animar na inicialização
+                        }
+                        
+
+                    } else {
+                        // Dados muito antigos, limpar
+                        clearFormData();
+                    }
+                }
+            } catch (error) {
+                console.error('Erro ao carregar dados salvos:', error);
+                clearFormData();
+            }
+        }
+        
+        function clearFormData() {
+            localStorage.removeItem(STORAGE_KEY);
+            localStorage.removeItem(STORAGE_STEP_KEY);
+        }
+        
+
+        
+        function autoSave() {
+            clearTimeout(autoSaveTimeout);
+            autoSaveTimeout = setTimeout(() => {
+                saveFormData();
+            }, 1000); // Salvar após 1 segundo de inatividade
+        }
+        
+        // Limpar mensagens de erro ao digitar
+        document.getElementById('email').addEventListener('input', function() {
+            const emailField = this;
+            const emailError = document.getElementById('emailError');
+            
+            // Remover bordas de erro e mensagens ao digitar
+            emailField.classList.remove('border-red-500', 'border-green-500');
+            emailError.classList.add('hidden');
+        });
+        
+        // Validação de número máximo de dígitos para WhatsApp
+        document.getElementById('whatsapp').addEventListener('input', function() {
+            let value = this.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+            
+            // Limita a 11 dígitos (padrão brasileiro: DDD + 9 dígitos)
+            if (value.length > 11) {
+                value = value.substring(0, 11);
+            }
+            
+            // Aplica máscara de formatação
+            if (value.length >= 11) {
+                this.value = `(${value.substring(0, 2)}) ${value.substring(2, 7)}-${value.substring(7, 11)}`;
+            } else if (value.length >= 7) {
+                this.value = `(${value.substring(0, 2)}) ${value.substring(2, 7)}-${value.substring(7)}`;
+            } else if (value.length >= 3) {
+                this.value = `(${value.substring(0, 2)}) ${value.substring(2)}`;
+            } else if (value.length >= 1) {
+                this.value = `(${value}`;
+            } else {
+                this.value = '';
+            }
+        });
+        
+        // Auto-adicionar https:// no campo de URL
+        document.getElementById('url_site').addEventListener('input', function() {
+            let value = this.value;
+            
+            // Se o usuário começar a digitar e não tiver https://, adicionar automaticamente
+            if (value.length > 0 && !value.startsWith('https://') && !value.startsWith('http://')) {
+                this.value = 'https://' + value;
+            }
+        });
+        
+
+        
+        // Função para validar campo atual
+        function validateCurrentStep() {
+            switch(currentStep) {
+                case 1:
+                    const nome = document.getElementById('nome').value.trim();
+                    if (nome === '') {
+                        alert('Por favor, digite seu nome.');
+                        document.getElementById('nome').focus();
+                        return false;
+                    }
+                    break;
+                    
+                case 2:
+                    const email = document.getElementById('email').value.trim();
+                    const emailField = document.getElementById('email');
+                    const emailError = document.getElementById('emailError');
+                    
+                    // Limpar estados anteriores
+                    emailField.classList.remove('border-red-500', 'border-green-500');
+                    emailError.classList.add('hidden');
+                    
+                    if (email === '') {
+                        emailField.classList.add('border-red-500');
+                        emailError.classList.remove('hidden');
+                        emailField.focus();
+                        return false;
+                    }
+                    
+                    // Validação mais rigorosa do email
+                    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                    if (!emailRegex.test(email)) {
+                        emailField.classList.add('border-red-500');
+                        emailError.classList.remove('hidden');
+                        emailField.focus();
+                        return false;
+                    }
+                    
+                    // Verificar se o email tem pelo menos um ponto após o @
+                    const emailParts = email.split('@');
+                    if (emailParts.length !== 2) {
+                        emailField.classList.add('border-red-500');
+                        emailError.classList.remove('hidden');
+                        emailField.focus();
+                        return false;
+                    }
+                    
+                    const domain = emailParts[1];
+                    if (!domain.includes('.') || domain.length < 4) {
+                        emailField.classList.add('border-red-500');
+                        emailError.classList.remove('hidden');
+                        emailField.focus();
+                        return false;
+                    }
+                    
+                    // Verificar se não é um email temporário ou inválido comum
+                    const invalidDomains = ['test.com', 'example.com', 'teste.com', 'email.com'];
+                    if (invalidDomains.includes(domain.toLowerCase())) {
+                        emailField.classList.add('border-red-500');
+                        emailError.classList.remove('hidden');
+                        emailField.focus();
+                        return false;
+                    }
+                    
+                    // Verificar se o nome de usuário tem pelo menos 2 caracteres
+                    const username = emailParts[0];
+                    if (username.length < 2) {
+                        emailField.classList.add('border-red-500');
+                        emailError.classList.remove('hidden');
+                        emailField.focus();
+                        return false;
+                    }
+                    
+                    // Email válido - sem feedback visual
+                    break;
+                    
+                case 3:
+                    const whatsapp = document.getElementById('whatsapp').value.trim();
+                    if (whatsapp === '') {
+                        alert('Por favor, digite seu WhatsApp.');
+                        document.getElementById('whatsapp').focus();
+                        return false;
+                    }
+                    
+                    const phoneDigits = whatsapp.replace(/\D/g, '');
+                    if (phoneDigits.length < 10) {
+                        alert('Por favor, digite um número de WhatsApp válido.');
+                        document.getElementById('whatsapp').focus();
+                        return false;
+                    }
+                    break;
+                    
+                case 4:
+                    const segmento = document.querySelector('input[name="segmento"]:checked');
+                    if (!segmento) {
+                        alert('Por favor, selecione o segmento da sua empresa.');
+                        return false;
+                    }
+                    break;
+                    
+                case 5:
+                    const urlSite = document.getElementById('url_site').value.trim();
+                    if (urlSite === '') {
+                        alert('Por favor, digite a URL do seu site.');
+                        document.getElementById('url_site').focus();
+                        return false;
+                    }
+                    
+                    try {
+                        new URL(urlSite);
+                    } catch {
+                        alert('Por favor, digite uma URL válida (ex: https://www.seusite.com).');
+                        document.getElementById('url_site').focus();
+                        return false;
+                    }
+                    break;
+                    
+                case 6:
+                    const faturamento = document.querySelector('input[name="faturamento"]:checked');
+                    if (!faturamento) {
+                        alert('Por favor, selecione sua faixa de faturamento mensal.');
+                        return false;
+                    }
+                    break;
+                    
+
+            }
+            return true;
+        }
+        
+        // Função para mostrar etapa
+        function showStep(step, animate = true) {
+            const currentStepElement = document.getElementById(`step${currentStep}`);
+            const nextStepElement = document.getElementById(`step${step}`);
+            
+            if (animate && currentStepElement && nextStepElement && currentStep !== step) {
+                // Animação de saída da etapa atual
+                currentStepElement.style.opacity = '0';
+                currentStepElement.style.transform = 'translateX(-20px)';
+                
+                setTimeout(() => {
+                    // Esconder todas as etapas
+                    for (let i = 1; i <= totalSteps; i++) {
+                        document.getElementById(`step${i}`).classList.add('hidden');
+                    }
+                    
+                    // Mostrar etapa atual
+                    nextStepElement.classList.remove('hidden');
+                    nextStepElement.style.opacity = '0';
+                    nextStepElement.style.transform = 'translateX(20px)';
+                    
+                    // Animação de entrada da nova etapa
+                    setTimeout(() => {
+                        nextStepElement.style.opacity = '1';
+                        nextStepElement.style.transform = 'translateX(0)';
+                    }, 50);
+                    
+                    // Focar no campo da nova etapa
+                    setTimeout(() => {
+                        const inputs = {
+                            1: 'nome',
+                            2: 'email',
+                            3: 'whatsapp',
+                            5: 'url_site'
+                        };
+                        if (inputs[step]) {
+                            document.getElementById(inputs[step]).focus();
+                        }
+                    }, 300);
+                }, 200);
+            } else {
+                // Sem animação (inicialização)
+                for (let i = 1; i <= totalSteps; i++) {
+                    document.getElementById(`step${i}`).classList.add('hidden');
+                }
+                nextStepElement.classList.remove('hidden');
+                nextStepElement.style.opacity = '1';
+                nextStepElement.style.transform = 'translateX(0)';
+                
+                // Focar no campo da etapa
+                setTimeout(() => {
+                    const inputs = {
+                        1: 'nome',
+                        2: 'email',
+                        3: 'whatsapp',
+                        5: 'url_site'
+                    };
+                    if (inputs[step]) {
+                        document.getElementById(inputs[step]).focus();
+                    }
+                }, 100);
+            }
+            
+            // Atualizar indicadores
+            currentStepSpan.textContent = step;
+            const progressWidth = (step / totalSteps) * 100;
+            progressBar.style.width = `${progressWidth}%`;
+            
+            // Atualizar depoimento baseado na etapa
+            updateTestimonial(step);
+            
+            // Controlar estado da seta do header
+            const headerSvg = headerBackBtn.querySelector('svg');
+            if (step === 1) {
+                headerBackBtn.disabled = true;
+                headerBackBtn.classList.remove('cursor-pointer');
+                headerBackBtn.classList.add('cursor-not-allowed');
+                headerSvg.classList.remove('text-[#F20458]');
+                headerSvg.classList.add('text-gray-400');
+            } else {
+                headerBackBtn.disabled = false;
+                headerBackBtn.classList.add('cursor-pointer');
+                headerBackBtn.classList.remove('cursor-not-allowed');
+                headerSvg.classList.add('text-[#F20458]');
+                headerSvg.classList.remove('text-gray-400');
+            }
+            
+            // Mudar texto do botão na última etapa
+            if (step === totalSteps) {
+                nextBtn.innerHTML = `
+                    FINALIZAR
+                    <svg width="15" height="15" fill="#ffff">
+                        <path fill-rule="evenodd" d="M6.232 7.5L.94 2.207 2.354.793 9.06 7.5l-6.707 6.707-1.415-1.414L6.232 7.5z" clip-rule="evenodd"></path>
+                    </svg>
+                `;
+            } else {
+                nextBtn.innerHTML = `
+                    PROSSEGUIR
+                    <svg width="15" height="15" fill="#ffff">
+                        <path fill-rule="evenodd" d="M6.232 7.5L.94 2.207 2.354.793 9.06 7.5l-6.707 6.707-1.415-1.414L6.232 7.5z" clip-rule="evenodd"></path>
+                    </svg>
+                `;
+            }
+        }
+        
+        // Event listeners para os botões
+        nextBtn.addEventListener('click', async function() {
+            if (validateCurrentStep()) {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    showStep(currentStep);
+                    saveFormData(); // Salvar ao avançar etapa
+                } else {
+                    // Finalizar formulário - enviar para N8N
+                    await submitFormToN8N();
+                }
+            }
+        });
+        
+        headerBackBtn.addEventListener('click', function() {
+            if (currentStep > 1 && !headerBackBtn.disabled) {
+                currentStep--;
+                showStep(currentStep);
+                saveFormData(); // Salvar ao voltar etapa
+            }
+        });
+        
+        // Event listeners para salvamento automático nos campos
+        document.getElementById('nome').addEventListener('input', autoSave);
+        document.getElementById('email').addEventListener('input', autoSave);
+        document.getElementById('whatsapp').addEventListener('input', autoSave);
+        document.getElementById('url_site').addEventListener('input', autoSave);
+        
+        // Permitir navegação com Enter
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                nextBtn.click();
+            }
+        });
+        
+        // Funcionalidade dos radio buttons
+        document.querySelectorAll('input[name="segmento"], input[name="faturamento"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                // Reset todos os radio buttons do mesmo grupo
+                const groupName = this.name;
+                document.querySelectorAll(`input[name="${groupName}"]`).forEach(groupRadio => {
+                    const label = groupRadio.closest('label');
+                    const radioDot = label.querySelector('.radio-dot');
+                    const radioCustom = label.querySelector('.radio-custom');
+                    
+                    radioDot.classList.add('hidden');
+                    radioCustom.classList.remove('border-[#F20458]');
+                });
+                
+                // Ativar o selecionado
+                const selectedLabel = this.closest('label');
+                const radioDot = selectedLabel.querySelector('.radio-dot');
+                const radioCustom = selectedLabel.querySelector('.radio-custom');
+                
+                radioDot.classList.remove('hidden');
+                radioCustom.classList.add('border-[#F20458]');
+                
+                // Salvar automaticamente quando radio button for alterado
+                autoSave();
+            });
+        });
+        
+        // Função para gerar UUIDs para segmento
+        function generateSegmentoUUID(segmento) {
+            const segmentos = {
+                'ecommerce-estoque': '7faee7d4-a626-43c0-8c25-7a6b1f11219a',
+                'dropshipping': '5b603319-9d31-43bc-b37a-f2c72f566d1c',
+                'venda-servico': '226e4ad1-71f8-49ac-b154-466b2b998f3d',
+                'outros': '46a41189-5a6d-42f6-8102-ab98f141642d'
+            };
+            return segmentos[segmento] || '46a41189-5a6d-42f6-8102-ab98f141642d';
+        }
+        
+        // Função para obter parâmetros UTM da URL
+        function getUTMParameters() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return {
+                utm_source: urlParams.get('utm_source') || 'direct',
+                utm_medium: urlParams.get('utm_medium') || 'none',
+                utm_campaign: urlParams.get('utm_campaign') || 'none',
+                utm_term: urlParams.get('utm_term') || 'none',
+                utm_content: urlParams.get('utm_content') || 'none'
+            };
+        }
+        
+        // Função para mapear valores de faturamento com UUIDs
+        function mapFaturamento(faturamento) {
+            const mapping = {
+                'abaixo-20mil': '695596f6-e44a-45ee-b4a8-530ab508bfda',
+                '20mil-40mil': '4d513d2a-1c5c-4eb6-8e59-a102113ef6e5',
+                '40mil-100mil': 'eb6aa77a-5f62-4d49-ac62-e7071dc8606a',
+                'acima-100mil': '95a22bad-0010-40b9-8cf1-38950adc9665'
+            };
+            return mapping[faturamento] || '695596f6-e44a-45ee-b4a8-530ab508bfda';
+        }
+        
+        // Função para enviar formulário para N8N via GET
+        async function submitFormToN8N() {
+            const formData = {
+                nome: document.getElementById('nome').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                whatsapp: document.getElementById('whatsapp').value.trim(),
+                url_site: document.getElementById('url_site').value.trim(),
+                segmento: document.querySelector('input[name="segmento"]:checked')?.value,
+                faturamento: document.querySelector('input[name="faturamento"]:checked')?.value
+            };
+            
+            // Validar se todos os campos estão preenchidos
+            const missingFields = Object.entries(formData)
+                .filter(([key, value]) => !value)
+                .map(([key]) => key);
+                
+            if (missingFields.length > 0) {
+                alert('Por favor, preencha todos os campos: ' + missingFields.join(', '));
+                return;
+            }
+            
+            // Mostrar loading
+            nextBtn.innerHTML = 'ENVIANDO...';
+            nextBtn.disabled = true;
+            
+            try {
+                // Obter parâmetros UTM
+                const utm = getUTMParameters();
+                
+                // Gerar UUIDs
+                const segmentoUuid = generateSegmentoUUID(formData.segmento);
+    
+                
+                // Mapear faturamento
+                const faturamentoMapped = mapFaturamento(formData.faturamento);
+                
+                // Construir URL com parâmetros GET
+                const webhookUrl = 'https://n8n.gapecompany.com/webhook/9e936d46-3f02-4d09-bc60-df724ee3d9b6';
+                const params = new URLSearchParams({
+                    nome: formData.nome,
+                    email: formData.email,
+                    whatsapp: formData.whatsapp,
+                    segmento_empresa: segmentoUuid,
+                    url_site: formData.url_site,
+                    faturamento_mensal: faturamentoMapped,
+    
+                    utm_source: utm.utm_source,
+                    utm_medium: utm.utm_medium,
+                    utm_campaign: utm.utm_campaign,
+                    utm_term: utm.utm_term,
+                    utm_content: utm.utm_content
+                });
+                
+                const fullUrl = `${webhookUrl}?${params.toString()}`;
+                
+                // Fazer requisição GET
+                const response = await fetch(fullUrl, {
+                    method: 'GET',
+                    headers: {
+                        'User-Agent': 'FormularioGape/1.0'
+                    }
+                });
+                
+                // Considerar códigos 200 (OK) e 302 (Found/Redirect) como sucesso
+                if (response.ok || response.status === 302) {
+                    // Limpar dados salvos
+                    clearFormData();
+                    
+                    // Redirecionar para página de obrigado
+                    window.location.href = 'obrigado.html';
+                } else {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+            } catch (error) {
+                console.error('Erro na requisição:', error);
+                alert('Erro ao enviar dados. Verifique sua conexão e tente novamente.');
+            } finally {
+                // Restaurar botão
+                nextBtn.innerHTML = `
+                    FINALIZAR
+                    <svg width="15" height="15" fill="#ffff">
+                        <path fill-rule="evenodd" d="M6.232 7.5L.94 2.207 2.354.793 9.06 7.5l-6.707 6.707-1.415-1.414L6.232 7.5z" clip-rule="evenodd"></path>
+                    </svg>
+                `;
+                nextBtn.disabled = false;
+            }
+        }
+        
+        // Função para resetar o formulário
+        function resetForm() {
+            currentStep = 1;
+            showStep(currentStep, false);
+            document.getElementById('nome').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('whatsapp').value = '';
+            document.getElementById('url_site').value = '';
+            document.querySelectorAll('input[name="segmento"]').forEach(radio => radio.checked = false);
+            document.querySelectorAll('input[name="faturamento"]').forEach(radio => radio.checked = false);
+
+            document.querySelectorAll('.radio-dot').forEach(dot => dot.classList.add('hidden'));
+            document.querySelectorAll('.radio-custom').forEach(custom => custom.classList.remove('border-[#F20458]'));
+            
+            // Limpar dados salvos no localStorage
+            clearFormData();
+        }
+        
+        // Inicializar formulário
+        function initializeForm() {
+            // Limpar dados antigos que podem conter referências à etapa 7
+            const savedStep = localStorage.getItem(STORAGE_STEP_KEY);
+            if (savedStep && parseInt(savedStep) > 6) {
+                clearFormData();
+            }
+            
+            // Carregar dados salvos se existirem
+            loadFormData();
+            
+            // Se não há dados salvos, mostrar primeira etapa
+            if (currentStep === 1) {
+                showStep(currentStep, false);
+            }
+        }
+        
+        // Inicializar quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeForm();
+        });
+        
+        // Fallback para inicialização imediata
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeForm);
+        } else {
+            initializeForm();
+        }
+        
+        // Função para fechar o modal
+        function closeModal() {
+            document.getElementById('successModal').classList.add('hidden');
+        }
+        
+        // Fechar modal clicando fora dele
+        document.getElementById('successModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+
+
+
+</body>
+
+
+</html>
