@@ -204,6 +204,21 @@ const CTA = () => {
       setSubmitStatus('success')
       gtmTrack.generateLead(formData)
       
+      // Disparar eventos de conversão do Facebook e Google Ads
+      // Meta Pixel Lead Event
+      if (typeof window !== 'undefined' && (window as any).fbq) {
+        (window as any).fbq('track', 'Lead')
+        console.log('Lead event fired for Facebook Pixel')
+      }
+      
+      // Google Ads Lead Event
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'conversion', {
+          'send_to': 'AW-11127656445/TshvCI2M8O4YEP2firop'
+        })
+        console.log('Lead conversion event fired for Google Ads')
+      }
+      
       // Reset form
       setFormData({
         name: '',
