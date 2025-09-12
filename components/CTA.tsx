@@ -324,7 +324,7 @@ const CTA = () => {
               
               {/* Enhanced subheadline */}
               <p className="text-lg lg:text-xl text-gray-300 leading-relaxed mb-10 font-medium">
-                Descubra como nossa metodologia G.A.P.E pode transformar seu e-commerce em uma máquina de vendas no Google Ads!!!
+                Descubra como nossa metodologia G.A.P.E pode transformar seu e-commerce em uma máquina de vendas no Google Ads!!
               </p>
               
               {/* Enhanced Benefits Grid */}
