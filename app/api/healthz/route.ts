@@ -1,34 +1,40 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
 
-// Initialize Supabase client
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-)
+// Evita pré-render e garante execução dinâmica no servidor
+export const dynamic = 'force-dynamic'
 
 export async function GET() {
   try {
     const startTime = Date.now()
-    
-    // Test Supabase connection
-    const { error } = await supabase
-      .from('leads')
-      .select('count')
-      .limit(1)
+    let dbStatus: 'healthy' | 'unhealthy' | 'skipped' = 'skipped'
+
+    // Lê variáveis de ambiente em tempo de execução (não no topo do módulo)
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+    if (supabaseUrl && supabaseKey) {
+      const supabase = createClient(supabaseUrl, supabaseKey)
+      // Teste leve no banco (HEAD-like): conta sem retornar linhas
+      const { error } = await supabase
+        .from('leads')
+        .select('*', { count: 'exact', head: true })
+        .limit(1)
+      if (error) {
+        dbStatus = 'unhealthy'
+      } else {
+        dbStatus = 'healthy'
+      }
+    }
     
     const responseTime = Date.now() - startTime
-    
-    if (error) {
-      throw error
-    }
     
     return NextResponse.json(
       { 
         status: 'healthy',
         timestamp: new Date().toISOString(),
         services: {
-          database: 'healthy',
+          database: dbStatus,
           api: 'healthy'
         },
         responseTime: `${responseTime}ms`,
