@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Send, CheckCircle, AlertCircle, Rocket, Target, TrendingUp, Zap, ShoppingCart, BarChart3, Users, Clock } from 'lucide-react'
 import contentMap from '@/content/content-map.json'
 import { gtmTrack } from '@/lib/utils/gtm'
@@ -33,6 +33,8 @@ const CTA = () => {
   const [errors, setErrors] = useState<FormErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [timeLeft, setTimeLeft] = useState<string>('')
+  const [spotsLeft] = useState<number>(9)
   
   const ctaContent = contentMap.cta_form.revised
   
@@ -298,6 +300,23 @@ const CTA = () => {
     }
   }
 
+  // Contagem regressiva simples para urgência Black Friday
+  useEffect(() => {
+    // Define alvo para 7 dias a partir de agora (em ms)
+    const target = Date.now() + 7 * 24 * 60 * 60 * 1000
+    const interval = setInterval(() => {
+      const now = new Date().getTime()
+      const diff = Math.max(target - now, 0)
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+      setTimeLeft(`${days}d ${hours}h ${minutes}m ${seconds}s`)
+      if (diff === 0) clearInterval(interval)
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section id="contact-form" className="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-gape-black relative overflow-hidden">
       {/* Enhanced Background Elements */}
@@ -323,24 +342,32 @@ const CTA = () => {
               {/* Modern badge with icon */}
               <div className="inline-flex items-center gap-2 px-4 py-3 rounded-full bg-gradient-to-r from-gape-orange/20 to-gape-pink/20 border border-gape-orange/30 mb-6 backdrop-blur-sm">
                 <Rocket className="h-4 w-4 text-gape-orange" />
-                <span className="text-gape-orange text-sm font-bold">CONSULTORIA GRATUITA</span>
+                <span className="text-gape-orange text-sm font-extrabold">BLACK FRIDAY • 50% OFF</span>
               </div>
               
               {/* Enhanced headline */}
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-white via-gape-orange to-white bg-clip-text text-transparent">
-                  Multiplique Suas Vendas
-                </span>
+                <span className="bg-gradient-to-r from-white via-gape-orange to-white bg-clip-text text-transparent">A melhor época do ano para as lojas</span>
                 <br />
-                <span className="text-white">
-                  com Google Ads
-                </span>
+                <span className="text-white">+ a melhor estratégia!</span>
               </h2>
               
               {/* Enhanced subheadline */}
-              <p className="text-lg lg:text-xl text-gray-300 leading-relaxed mb-10 font-medium">
-                Descubra como nossa metodologia G.A.P.E pode transformar seu e-commerce em uma máquina de vendas no Google Ads
+              <p className="text-lg lg:text-xl text-gray-300 leading-relaxed mb-6 font-medium">
+                Iremos preparar o seu e-commerce para a BlackFriday com <span className="text-gape-orange font-bold">50% de desconto</span>. Implementação rápida de estratégia para você não perder a oportunidade de ter o seu maior faturamento no ano.
               </p>
+
+              {/* Urgência e escassez */}
+              <div className="mb-10 flex flex-col sm:flex-row sm:items-center gap-3">
+                <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white/5 border border-white/10">
+                  <Clock className="h-4 w-4 text-gape-orange" />
+                  <span className="text-sm text-gray-300">Termina em: <span className="text-white font-semibold">{timeLeft}</span></span>
+                </div>
+                <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-gape-orange/10 border border-gape-orange/30">
+                  <Users className="h-4 w-4 text-gape-orange" />
+                  <span className="text-sm text-white font-semibold">Apenas {spotsLeft} vagas</span>
+                </div>
+              </div>
               
               {/* Enhanced Benefits Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -351,7 +378,7 @@ const CTA = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-white mb-1">30 Minutos</h4>
-                    <p className="text-sm text-gray-400">Consultoria gratuita focada em resultados</p>
+                    <p className="text-sm text-gray-400">Plano de resgate Black Friday</p>
                   </div>
                 </div>
                 
@@ -361,8 +388,8 @@ const CTA = () => {
                     <BarChart3 className="relative h-7 w-7 text-blue-400" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-white mb-1">Análise Completa</h4>
-                    <p className="text-sm text-gray-400">Auditoria detalhada do seu e-commerce</p>
+                    <h4 className="text-lg font-bold text-white mb-1">Análise Express</h4>
+                    <p className="text-sm text-gray-400">Diagnóstico rápido do seu e-commerce</p>
                   </div>
                 </div>
                 
@@ -373,7 +400,7 @@ const CTA = () => {
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-white mb-1">Estratégia G.A.P.E</h4>
-                    <p className="text-sm text-gray-400">Metodologia personalizada para seu negócio</p>
+                    <p className="text-sm text-gray-400">Implementação focada em BF</p>
                   </div>
                 </div>
                 
@@ -383,8 +410,8 @@ const CTA = () => {
                     <Zap className="relative h-7 w-7 text-yellow-400" />
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-white mb-1">Sem Compromisso</h4>
-                    <p className="text-sm text-gray-400">100% gratuito, sem taxas ocultas</p>
+                    <h4 className="text-lg font-bold text-white mb-1">50% OFF</h4>
+                    <p className="text-sm text-gray-400">Oferta válida por tempo limitado</p>
                   </div>
                 </div>
               </div>
@@ -425,10 +452,10 @@ const CTA = () => {
                     <Users className="h-8 w-8 text-brand-primary/90" />
                   </div>
                   <h3 className="text-2xl font-black text-white mb-2">
-                    Comece Agora
+                    Garanta sua vaga com 50% OFF
                   </h3>
                   <p className="text-gray-300 font-medium">
-                    Preencha os dados e receba sua consultoria gratuita
+                    Consultoria gratuita + execução com 50% OFF por tempo limitado
                   </p>
                 </div>
 
@@ -572,9 +599,9 @@ const CTA = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="relative w-full group overflow-hidden rounded-2xl bg-gradient-to-r from-brand-primary to-brand-600 p-1 transition-all duration-300 hover:scale-105 hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  className="relative w-full group overflow-hidden rounded-2xl bg-gradient-to-r from-gape-orange to-gape-pink p-1 transition-all duration-300 hover:scale-105 hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
-                  <div className="relative bg-gradient-to-r from-brand-primary to-brand-600 rounded-xl px-8 py-4 transition-all duration-300 group-hover:from-brand-600 group-hover:to-brand-primary">
+                  <div className="relative bg-gradient-to-r from-gape-orange to-gape-pink rounded-xl px-8 py-4 transition-all duration-300 group-hover:from-gape-pink group-hover:to-gape-orange">
                     {isSubmitting ? (
                       <div className="flex items-center justify-center gap-3">
                         <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent" />
@@ -583,13 +610,13 @@ const CTA = () => {
                     ) : (
                       <div className="flex items-center justify-center gap-3">
                         <Rocket className="h-5 w-5 text-white group-hover:animate-pulse" />
-                        <span className="text-white font-bold text-lg">Enviar</span>
+                        <span className="text-white font-bold text-lg">Garantir 50% OFF</span>
                       </div>
                     )}
                   </div>
                   
                   {/* Button glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/50 to-brand-600/50 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-gape-orange/50 to-gape-pink/50 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
                 </button>
               </form>
               </div>

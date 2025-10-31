@@ -53,37 +53,37 @@ const Hero = () => {
           {/* Left content */}
           <div className="text-left">
             {/* Badge */}
-            <div className={`mb-6 inline-flex items-center px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary/90 text-sm font-medium transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-4'}`}>
-              Especialistas em Tráfego para E-commerce
+            <div className={`mb-6 inline-flex items-center px-4 py-1.5 rounded-full bg-gape-orange/10 border border-gape-orange/30 text-gape-orange text-sm font-bold transition-all duration-700 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-4'}`}>
+              Operação Black Friday: 50% OFF • Vagas Limitadas
             </div>
             
             {/* Main headline */}
             <h1 className={`text-3xl font-bold tracking-tight text-gape-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight transition-all duration-700 delay-100 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-4'}`}>
-              <span className="block">Acelere o crescimento do seu</span>
-              <span className="block text-brand-primary/95">E-commerce</span>
-              <span className="block">com quem sabe como fazer.</span>
+              <span className="block">Vamos salvar a sua</span>
+              <span className="block text-gape-orange">Black Friday</span>
+              <span className="block">a tempo de vender mais.</span>
             </h1>
             
             {/* Subheadline */}
             <p className={`mt-4 sm:mt-6 max-w-2xl text-base leading-7 text-gape-gray-light sm:text-lg sm:leading-8 lg:text-xl transition-all duration-700 delay-200 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-4'}`}>
-              O caminho para o sucesso do seu E-commerce já foi traçado. Só falta você se juntar aos <span className="text-brand-primary/90 font-semibold">150+ E-commerces</span> que já alcançaram <span className="text-brand-primary/90 font-semibold">+R$50 milhões em vendas.</span>
+              Oferta Black Friday com <span className="text-gape-orange font-semibold">50% OFF</span> para poucas vagas. Estratégia de resgate e escala feita por especialistas em E-commerce para você não perder a data mais importante do ano.
             </p>
           
             {/* CTA buttons */}
             <div className={`mt-8 sm:mt-10 flex flex-col sm:flex-row gap-4 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0 translate-y-4'}`}>
               <button
                 onClick={() => handleCTAClick('primary')}
-                className="inline-flex items-center justify-center px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-semibold text-gape-white bg-brand-primary/95 rounded-lg hover:bg-brand-600 transition-all duration-300 hover:shadow-lg hover:shadow-brand-primary/20"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-semibold text-gape-white bg-gradient-to-r from-gape-orange to-gape-pink rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-gape-orange/25"
               >
-                Quero crescer meu E-commerce
+                Quero salvar minha Black Friday
                 <ArrowRight className="ml-2 h-5 w-5" />
               </button>
               
               <button
                 onClick={() => handleCTAClick('secondary')}
-                className="inline-flex items-center justify-center px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-medium text-brand-primary/90 border border-brand-primary/20 rounded-lg hover:bg-brand-primary/5 transition-all duration-300"
+                className="inline-flex items-center justify-center px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-medium text-gape-orange border border-gape-orange/30 rounded-lg hover:bg-gape-orange/10 transition-all duration-300"
               >
-                Ver casos de sucesso
+                Ver oferta e vagas
               </button>
             </div>
             

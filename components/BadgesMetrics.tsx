@@ -79,11 +79,11 @@ const BadgesMetrics = () => {
                       {badge.platforms.map((platform, platformIndex) => (
                         <div key={platformIndex} className="relative group/platform">
                           <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/20 to-brand-600/20 rounded-2xl blur-lg opacity-0 group-hover/platform:opacity-100 transition-opacity duration-300"></div>
-                          <div className="relative h-16 w-16 mx-auto rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center shadow-xl group-hover/platform:shadow-2xl group-hover/platform:scale-110 transition-all duration-300">
+                          <div className="relative h-20 w-20 mx-auto rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center shadow-xl group-hover/platform:shadow-2xl group-hover/platform:scale-110 transition-all duration-300">
                             <img 
                               src={platform.logo} 
                               alt={platform.name}
-                              className="h-8 w-8 object-contain filter brightness-90 group-hover/platform:brightness-110 transition-all duration-300"
+                            className="h-12 w-12 object-contain filter brightness-90 group-hover/platform:brightness-110 transition-all duration-300"
                             />
                           </div>
                         </div>
@@ -93,11 +93,11 @@ const BadgesMetrics = () => {
                     // Single platform logo with enhanced design
                     <div className="relative group/single mx-auto w-fit">
                       <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/20 to-brand-600/20 rounded-3xl blur-xl opacity-0 group-hover/single:opacity-100 transition-opacity duration-500"></div>
-                      <div className="relative h-20 w-20 rounded-3xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center shadow-2xl group-hover/single:shadow-3xl group-hover/single:scale-110 transition-all duration-500">
+                      <div className="relative h-24 w-24 rounded-3xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center shadow-2xl group-hover/single:shadow-3xl group-hover/single:scale-110 transition-all duration-500">
                         <img 
                           src={badge.logo} 
                           alt={badge.name}
-                          className="h-10 w-10 object-contain filter brightness-90 group-hover/single:brightness-110 transition-all duration-500"
+                          className="h-14 w-14 object-contain filter brightness-90 group-hover/single:brightness-110 transition-all duration-500"
                         />
                       </div>
                     </div>

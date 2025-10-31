@@ -93,11 +93,11 @@ const Logos = () => {
                   className="flex-shrink-0 opacity-60 transition-opacity duration-300 hover:opacity-100"
                 >
                   <div
-                    className="flex items-center justify-center rounded-lg border border-gape-pink/20 bg-gape-dark-soft hover:border-gape-pink/40 transition-all duration-300 p-2"
+                    className="flex items-center justify-center rounded-lg border border-gape-pink/20 bg-gape-dark-soft hover:border-gape-pink/40 transition-all duration-300 p-3"
                     style={{ 
-                      width: Math.max(80, logo.width * 0.7), 
-                      height: Math.max(30, logo.height * 0.7),
-                      minWidth: '80px'
+                      width: Math.max(280, Math.round(logo.width * 1.2)), 
+                      height: Math.max(80, Math.round(logo.height * 1.2)),
+                      minWidth: '160px'
                     }}
                   >
                     <img 
@@ -116,11 +116,11 @@ const Logos = () => {
                   className="flex-shrink-0 opacity-60 transition-opacity duration-300 hover:opacity-100"
                 >
                   <div
-                    className="flex items-center justify-center rounded-lg border border-gape-pink/20 bg-gape-dark-soft hover:border-gape-pink/40 transition-all duration-300 p-2"
+                    className="flex items-center justify-center rounded-lg border border-gape-pink/20 bg-gape-dark-soft hover:border-gape-pink/40 transition-all duration-300 p-3"
                     style={{ 
-                      width: Math.max(80, logo.width * 0.7), 
-                      height: Math.max(30, logo.height * 0.7),
-                      minWidth: '80px'
+                      width: Math.max(280, Math.round(logo.width * 1.2)), 
+                      height: Math.max(80, Math.round(logo.height * 1.2)),
+                      minWidth: '160px'
                     }}
                   >
                     <img 

@@ -18,8 +18,8 @@ const Header = () => {
           <div className="flex items-center gap-4">
             <Logo variant="white" width={140} height={42} className="sm:w-[160px] sm:h-[48px]" />
             <div className="hidden lg:block">
-              <div className="text-xs text-brand-primary/90 font-medium">ESPECIALISTAS EM</div>
-              <div className="text-sm text-gape-white font-semibold">Google Ads para E-commerce</div>
+              <div className="text-xs text-gape-orange font-extrabold tracking-wide">BLACK FRIDAY</div>
+              <div className="text-sm text-gape-white font-semibold">50% OFF • Vagas Limitadas</div>
             </div>
           </div>
           
@@ -28,10 +28,10 @@ const Header = () => {
             {/* Quick CTA */}
             <button
               onClick={handleCTAClick}
-              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-brand-primary/90 to-brand-600 text-white text-sm font-semibold rounded-lg hover:shadow-lg hover:shadow-brand-primary/25 transition-all duration-300 hover:scale-105"
+              className="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gape-orange to-gape-pink text-white text-sm font-semibold rounded-lg hover:shadow-lg hover:shadow-gape-orange/25 transition-all duration-300 hover:scale-105"
             >
               <Zap className="h-4 w-4" />
-              Consultoria Gratuita
+              Garantir 50% OFF
             </button>
           </div>
         </div>

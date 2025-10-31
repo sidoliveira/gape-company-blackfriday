@@ -1445,6 +1445,11 @@ video {
   --tw-gradient-to: rgb(234 179 8 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
+.from-gape-orange\/50 {
+  --tw-gradient-from: rgb(249 0 88 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(249 0 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
 .via-blue-500\/30 {
   --tw-gradient-to: rgb(59 130 246 / 0)  var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), rgb(59 130 246 / 0.3) var(--tw-gradient-via-position), var(--tw-gradient-to);
@@ -1551,6 +1556,9 @@ video {
 }
 .to-white {
   --tw-gradient-to: #fff var(--tw-gradient-to-position);
+}
+.to-gape-pink\/50 {
+  --tw-gradient-to: rgb(249 0 88 / 0.5) var(--tw-gradient-to-position);
 }
 .bg-\[length\:50px_50px\] {
   background-size: 50px 50px;
@@ -1694,6 +1702,9 @@ video {
 .font-semibold {
   font-weight: 600;
 }
+.font-extrabold {
+  font-weight: 800;
+}
 .uppercase {
   text-transform: uppercase;
 }
@@ -1711,6 +1722,9 @@ video {
 }
 .tracking-wider {
   letter-spacing: 0.05em;
+}
+.tracking-wide {
+  letter-spacing: 0.025em;
 }
 .text-blue-400 {
   --tw-text-opacity: 1;
@@ -2368,6 +2382,10 @@ textarea:focus-visible {
   --tw-shadow-color: rgb(249 0 88 / 0.05);
   --tw-shadow: var(--tw-shadow-colored);
 }
+.hover\:shadow-gape-orange\/25:hover {
+  --tw-shadow-color: rgb(249 0 88 / 0.25);
+  --tw-shadow: var(--tw-shadow-colored);
+}
 .hover\:brightness-100:hover {
   --tw-brightness: brightness(1);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -2478,6 +2496,11 @@ textarea:focus-visible {
   --tw-gradient-to: rgb(249 0 88 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
+.group:hover .group-hover\:from-gape-pink {
+  --tw-gradient-from: #F90058 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(249 0 88 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
 .group:hover .group-hover\:to-brand-600 {
   --tw-gradient-to: #e11d48 var(--tw-gradient-to-position);
 }
@@ -2486,6 +2509,9 @@ textarea:focus-visible {
 }
 .group:hover .group-hover\:to-gape-pink\/20 {
   --tw-gradient-to: rgb(249 0 88 / 0.2) var(--tw-gradient-to-position);
+}
+.group:hover .group-hover\:to-gape-orange {
+  --tw-gradient-to: #F90058 var(--tw-gradient-to-position);
 }
 .group:hover .group-hover\:bg-clip-text {
   -webkit-background-clip: text;
@@ -2602,6 +2628,10 @@ textarea:focus-visible {
 
   .sm\:flex-row {
     flex-direction: row;
+  }
+
+  .sm\:items-center {
+    align-items: center;
   }
 
   .sm\:gap-12 {
