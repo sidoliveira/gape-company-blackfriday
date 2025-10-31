@@ -471,6 +471,7 @@ const CTA = () => {
                 </div>
               )}
               
+              
               {submitStatus === 'error' && (
                 <div className="mb-4 sm:mb-6 rounded-lg bg-red-50 p-3 sm:p-4 border border-red-200">
                   <div className="flex items-center">
