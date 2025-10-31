@@ -3,6 +3,9 @@ import { z } from 'zod'
 import { createClient } from '@supabase/supabase-js'
 import { headers } from 'next/headers'
 
+// Evita pré-render e garante execução dinâmica
+export const dynamic = 'force-dynamic'
+
 // Rate limiting store (in production, use Redis or similar)
 const rateLimitStore = new Map<string, { count: number; resetTime: number }>()
 
@@ -14,14 +17,16 @@ const leadSchema = z.object({
   website: z.string().url().optional().or(z.literal('')),
   segment: z.string().optional(),
   revenueRange: z.string().optional(),
-  consent: z.boolean().refine(val => val === true, 'Consentimento é obrigatório')
+  consent: z.boolean().refine((val: boolean) => val === true, 'Consentimento é obrigatório')
 })
 
-// Initialize Supabase client
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-)
+// Cria cliente Supabase sob demanda, lendo envs em runtime
+function getSupabase() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  if (!supabaseUrl || !supabaseKey) return null
+  return createClient(supabaseUrl, supabaseKey)
+}
 
 // Rate limiting function
 function checkRateLimit(ip: string): boolean {
@@ -54,11 +59,12 @@ function cleanupRateLimit() {
   })
 }
 
-// Run cleanup every 30 minutes
-setInterval(cleanupRateLimit, 30 * 60 * 1000)
+// NOTA: evitar timers no topo do módulo em runtimes serverless/edge
 
 export async function POST(request: NextRequest) {
   try {
+    // Limpa rate limit expirado sob demanda
+    cleanupRateLimit()
     // Get client IP for rate limiting
     const headersList = headers()
     const forwarded = headersList.get('x-forwarded-for')
@@ -91,6 +97,13 @@ export async function POST(request: NextRequest) {
     }
     
     // Insert lead into Supabase
+    const supabase = getSupabase()
+    if (!supabase) {
+      return NextResponse.json(
+        { error: 'Configuração do banco ausente' },
+        { status: 500 }
+      )
+    }
     const { data, error } = await supabase
       .from('leads')
       .insert([leadData])
@@ -122,7 +135,7 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     )
     
-  } catch (error) {
+  } catch (error: any) {
     console.error('API error:', error)
     
     // Validation errors
@@ -130,7 +143,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { 
           error: 'Dados inválidos',
-          details: error.errors.map(err => ({
+          details: error.errors.map((err: any) => ({
             field: err.path.join('.'),
             message: err.message
           }))
@@ -158,10 +171,17 @@ export async function POST(request: NextRequest) {
 // Health check endpoint
 export async function GET() {
   try {
+    const supabase = getSupabase()
+    if (!supabase) {
+      return NextResponse.json(
+        { status: 'healthy', database: 'skipped', timestamp: new Date().toISOString() },
+        { status: 200 }
+      )
+    }
     // Test Supabase connection
     const { error } = await supabase
       .from('leads')
-      .select('count')
+      .select('*', { count: 'exact', head: true })
       .limit(1)
     
     if (error) {
@@ -175,7 +195,7 @@ export async function GET() {
       },
       { status: 200 }
     )
-  } catch (error) {
+  } catch (error: any) {
     console.error('Health check failed:', error)
     return NextResponse.json(
       { 
